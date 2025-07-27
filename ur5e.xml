@@ -59,17 +59,17 @@
     <body name="base" quat="0 0 0 -1" childclass="ur5e">
       <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072"/>
       <!-- Reference frame: base -->
-      <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+      <!--<geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
       <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
       <geom mesh="base_0" material="black" class="visual"/>
       <geom mesh="base_1" material="jointgray" class="visual"/>
       <body name="shoulder_link" pos="0 0 0.163">
         <inertial mass="3.7" pos="0 0 0" diaginertia="0.0102675 0.0102675 0.00666"/>
         <!-- Reference frame: shoulder_link -->
-        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <!--<geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
         <joint name="shoulder_pan_joint" class="size3" axis="0 0 1"/>
         <geom mesh="shoulder_0" material="urblue" class="visual"/>
         <geom mesh="shoulder_1" material="black" class="visual"/>
@@ -78,9 +78,9 @@
         <body name="upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
           <inertial mass="8.393" pos="0 0 0.2125" diaginertia="0.133886 0.133886 0.0151074"/>
           <!-- Reference frame: upper_arm_link -->
-          <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+          <!-- <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
           <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-          <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+          <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
           <joint name="shoulder_lift_joint" class="size3"/>
           <geom mesh="upperarm_0" material="linkgray" class="visual"/>
           <geom mesh="upperarm_1" material="black" class="visual"/>
@@ -91,9 +91,9 @@
           <body name="forearm_link" pos="0 -0.131 0.425">
             <inertial mass="2.275" pos="0 0 0.196" diaginertia="0.0311796 0.0311796 0.004095"/>
             <!-- Reference frame: forearm_link -->
-            <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+            <!-- <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
             <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-            <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+            <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
             <joint name="elbow_joint" class="size3_limited"/>
             <geom mesh="forearm_0" material="urblue" class="visual"/>
             <geom mesh="forearm_1" material="linkgray" class="visual"/>
@@ -104,9 +104,9 @@
             <body name="wrist_1_link" pos="0 0 0.392" quat="1 0 1 0">
               <inertial mass="1.219" pos="0 0.127 0" diaginertia="0.0025599 0.0025599 0.0021942"/>
               <!-- Reference frame: wrist_1_link -->
-              <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+              <!-- <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
               <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-              <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+              <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
               <joint name="wrist_1_joint" class="size1"/>
               <geom mesh="wrist1_0" material="black" class="visual"/>
               <geom mesh="wrist1_1" material="urblue" class="visual"/>
@@ -115,9 +115,9 @@
               <body name="wrist_2_link" pos="0 0.127 0">
                 <inertial mass="1.219" pos="0 0 0.1" diaginertia="0.0025599 0.0025599 0.0021942"/>
                 <!-- Reference frame: wrist_2_link -->
-                <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                <!-- <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
                 <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-                <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
                 <joint name="wrist_2_joint" axis="0 0 1" class="size1"/>
                 <geom mesh="wrist2_0" material="black" class="visual"/>
                 <geom mesh="wrist2_1" material="urblue" class="visual"/>
@@ -128,9 +128,9 @@
                   <inertial mass="0.1889" pos="0 0.0771683 0" quat="1 0 0 1"
                     diaginertia="0.000132134 9.90863e-05 9.90863e-05"/>
                   <!-- Reference frame: wrist_3_link -->
-                  <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                  <!-- <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
                   <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-                  <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                  <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/> -->
                   <joint name="wrist_3_joint" class="size1"/>
                   <geom material="linkgray" mesh="wrist3" class="visual"/>
                   <geom name="wrist_3_collision" class="eef_collision" pos="0 0.08 0" quat="1 1 0 0" size="0.04 0.02"/>

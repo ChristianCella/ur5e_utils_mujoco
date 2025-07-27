@@ -21,9 +21,9 @@
     <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
     <!-- Definition of the world frame -->
     <body name="world_frame" pos="0.0 0.0 0.0">
-        <geom name="world_x_axis" type="capsule" fromto="0 0 0 0.12 0 0" size="0.01" rgba="1 0 0 1" contype="0" conaffinity="0"/>
-        <geom name="world_y_axis" type="capsule" fromto="0 0 0 0 0.12 0" size="0.01" rgba="0 1 0 1" contype="0" conaffinity="0"/>
-        <geom name="world_z_axis" type="capsule" fromto="0 0 0 0 0 0.12" size="0.01" rgba="0 0 1 1" contype="0" conaffinity="0"/>
+        <geom name="world_x_axis" type="capsule" fromto="0 0 0 0.15 0 0" size="0.01" rgba="0.988 0.663 0.521 1" contype="0" conaffinity="0"/>
+        <geom name="world_y_axis" type="capsule" fromto="0 0 0 0 0.15 0" size="0.01" rgba="0.569 0.828 0.565 1" contype="0" conaffinity="0"/>
+        <geom name="world_z_axis" type="capsule" fromto="0 0 0 0 0 0.15" size="0.01" rgba="0.435 0.717 0.84 1" contype="0" conaffinity="0"/>
     </body>
     <!-- Definition of the reference targets -->
     <body name="reference_target_1" pos="0.5 0.0 0.5">
@@ -52,7 +52,7 @@
         <geom name="reference_z_axis5" type="capsule" fromto="0 0 0 0 0 0.12" size="0.01" rgba="0 0 1 1" contype="0" conaffinity="0"/>
     </body>
     <!-- Definition of the forces (just for visualization) -->
-    <body name="force_arrow_x" pos="0 0 0" mocap="true">
+    <!-- <body name="force_arrow_x" pos="0 0 0" mocap="true">
       <geom name="force_arrow_x_geom" type="cylinder" size="0.005 0.1" rgba="1 0 0 1" contype="0" conaffinity="0"/>
     </body>
     <body name="force_arrow_y" pos="0 0 0" mocap="true">
@@ -70,7 +70,7 @@
     </body>
     <body name="moment_arrow_z" pos="0 0 0" mocap="true">
         <geom name="moment_arrow_z_geom" type="cylinder" size="0.009 0.06" rgba="0.8 0.8 1 1" contype="0" conaffinity="0"/>
-    </body>
+    </body> -->
 
     <!-- STATIC OBSTACLE: a 0.2 m cube centered at (0.3, 0, 0.1) -->
     <geom 
