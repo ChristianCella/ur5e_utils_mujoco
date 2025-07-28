@@ -1,0 +1,28 @@
+<mujoco model="screw_test">
+  <compiler angle="radian"/>
+  <option gravity="0 0 -9.81" integrator="Euler" timestep="0.002"/>
+
+  <default>
+    <default class="eef_collision">
+      <geom type="cylinder" contype="1" conaffinity="1" size="0.01 0.05" rgba="0.3 0.3 0.3 1"/>
+    </default>
+  </default>
+
+  <worldbody>
+    <body name="tool_frame" pos="0 0 0" quat="1 0 0 0">
+      <site name="tool_site" pos="0 0 0" quat="1 0 0 0"/>
+      <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003"/>
+      <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003"/>
+      <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003"/>
+
+      <body name="screw_top" pos="0 0 0">
+        <inertial mass="1.5" pos="0 0 0.08" diaginertia="0.00860 0.00860 0.000768"/>
+        <geom type="sphere" size="0.005" pos="0 0 0.08" rgba="1 0 1 1" contype="0" conaffinity="0" group="2"/>
+        <geom type="cylinder" size="0.032 0.08" pos="0 0 0.08" contype="0" conaffinity="0" group="2" rgba="0.6 0.2 0.2 1"/>
+        <geom type="cylinder" size="0.0075 0.05" pos="0 0 0.21" contype="0" conaffinity="0" group="2" rgba="0.8 0.8 0.8 1"/>
+        <geom name="screw_upper_collision" class="eef_collision" size="0.032 0.10" pos="0 0 0.08"/>
+        <geom name="screw_lower_collision" class="eef_collision" size="0.0075 0.05" pos="0 0 0.21"/>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>
