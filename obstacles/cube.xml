@@ -1,0 +1,13 @@
+<mujoco model="cube_viewer">
+  <worldbody>
+    <body name="obstacle_body" pos="0.3 0 0.1">
+      <geom 
+        name="obstacle" 
+        type="box" 
+        size="0.1 0.1 0.1"         
+        rgba="0.8 0.2 0.2 1"       
+        contype="1" 
+        conaffinity="1"/>
+    </body>
+  </worldbody>
+</mujoco>
