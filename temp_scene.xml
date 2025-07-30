@@ -176,7 +176,16 @@
       <!-- Shorter side -->
       <geom name="shorter_side" type="box" size="0.11 0.035 0.03" pos="0.035 0.185 0.07" rgba="0.2 0.2 0.8 1" contype="1" conaffinity="1" group="3"/>
 
-      <site name="mount_plate_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
+      <!-- Definition of the sites -->
+      <!-- center of the piece -->
+      <site name="mount_plate_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
+
+      <!-- Hole 1 -->
+      <body name="hole_1_frame_body" pos="0.1 -0.17 0.04" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
     </body>
   <body name="reference_target_1" pos="0.1 0.1 0.1"><geom name="reference_x_axis1" type="capsule" fromto="0 0 0 0.1 0 0" size="0.005" rgba="1 0 0 0.5" contype="0" conaffinity="0"/><geom name="reference_y_axis1" type="capsule" fromto="0 0 0 0 0.1 0" size="0.005" rgba="0 1 0 0.5" contype="0" conaffinity="0"/><geom name="reference_z_axis1" type="capsule" fromto="0 0 0 0 0 0.1" size="0.005" rgba="0 0 1 0.5" contype="0" conaffinity="0"/></body><body name="reference_target_2" pos="0.1 0.1 0.1"><geom name="reference_x_axis2" type="capsule" fromto="0 0 0 0.1 0 0" size="0.005" rgba="1 0 0 0.5" contype="0" conaffinity="0"/><geom name="reference_y_axis2" type="capsule" fromto="0 0 0 0 0.1 0" size="0.005" rgba="0 1 0 0.5" contype="0" conaffinity="0"/><geom name="reference_z_axis2" type="capsule" fromto="0 0 0 0 0 0.1" size="0.005" rgba="0 0 1 0.5" contype="0" conaffinity="0"/></body></worldbody>
 

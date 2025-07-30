@@ -150,7 +150,7 @@
                     </body>
                   <body name="tool_top" pos="0 0 0">
       <inertial mass="2.6" pos="0 0 0.155" diaginertia="0.0143 0.0143 0.0016"/>
-      <geom type="mesh" mesh="tool_mesh" rgba="0.7 0.7 0.7 1" contype="0" conaffinity="0" group="0"/>
+      <geom type="mesh" mesh="tool_mesh" rgba="0.2 0.2 0.2 1" contype="0" conaffinity="0" group="0"/>
       <!-- collision cylinder -->
       <geom name="screwdriver" type="cylinder" size="0.035 0.155" pos="0 0 0.155" rgba="0.2 0.8 0.2 1" contype="1" conaffinity="1" group="3"/>
       <!-- Marker (red sphere) to specify the origin -->
