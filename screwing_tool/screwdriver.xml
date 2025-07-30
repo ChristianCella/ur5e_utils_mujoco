@@ -1,28 +1,31 @@
-<mujoco model="screw_test">
+<mujoco model="screwdriver">
   <compiler angle="radian"/>
-  <option gravity="0 0 -9.81" integrator="Euler" timestep="0.002"/>
+  <option timestep="0.01"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <mesh name="tool_mesh" file="screwdriver.obj"/> 
+  </asset>
 
   <default>
-    <default class="eef_collision">
-      <geom type="cylinder" group="3" contype="1" conaffinity="1" size="0.01 0.05" rgba="0.3 0.3 0.3 1"/>
-    </default>
+    <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
   </default>
 
   <worldbody>
-    <body name="tool_frame" pos="0 0 0" quat="1 0 0 0">
-      <site name="tool_site" pos="0 0 0" quat="1 0 0 0"/>
-      <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003"/>
-      <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003"/>
-      <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003"/>
-
-      <body name="screw_top" pos="0 0 0">
-        <inertial mass="1.5" pos="0 0 0.08" diaginertia="0.00860 0.00860 0.000768"/>
-        <geom type="sphere" size="0.005" pos="0 0 0.08" rgba="1 0 1 1" contype="0" conaffinity="0" group="2"/>
-        <geom type="cylinder" size="0.032 0.08" pos="0 0 0.08" contype="0" conaffinity="0" group="2" rgba="0.6 0.2 0.2 1"/>
-        <geom type="cylinder" size="0.0075 0.05" pos="0 0 0.21" contype="0" conaffinity="0" group="2" rgba="0.8 0.8 0.8 1"/>
-        <geom name="screw_upper_collision" class="eef_collision" size="0.032 0.08" pos="0 0 0.08"/>
-        <geom name="screw_lower_collision" class="eef_collision" size="0.0075 0.05" pos="0 0 0.21"/>
-      </body>
+    <body name="tool_top" pos="0 0 0">
+      <inertial mass="2.6" pos="0 0 0.155" diaginertia="0.0143 0.0143 0.0016"/>
+      <geom type="mesh" mesh="tool_mesh" rgba="0.7 0.7 0.7 1" contype="0" conaffinity="0" group="0"/>
+      <!-- collision cylinder -->
+      <geom name="screwdriver" type="cylinder" size="0.035 0.155" pos="0 0 0.155" rgba="0.2 0.8 0.2 1" contype="1" conaffinity="1" group="3"/>
+      <!-- Marker (red sphere) to specify the origin -->
+      <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
+      <!-- Marker (green sphere) to specify the point of application of the weight -->
+      <geom type="sphere" size="0.005" pos="0 0 0.125" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/>
     </body>
   </worldbody>
 </mujoco>
