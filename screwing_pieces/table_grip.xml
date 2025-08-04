@@ -1,0 +1,73 @@
+<mujoco model="small_tool">
+  <compiler angle="radian"/>
+  <option timestep="0.01"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <mesh name="table_grip_mesh" file="table_grip.obj"/> 
+  </asset>
+
+  <default>
+    <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+  </default>
+
+  <worldbody>
+    <body name="table_grip" pos="0 0 0">
+
+      <geom type="mesh" mesh="table_grip_mesh" rgba="0.45 0.45 0.45 1" contype="0" conaffinity="0" group="0"/>
+
+      <!-- Base plate -->
+      <geom name="base_plate" type="box" size="0.09 0.175 0.02" pos="0 0 0.02" rgba="0.8 0.2 0.2 1" contype="1" conaffinity="1" group="3"/>
+
+      <!-- Central support -->
+      <geom name="central_support" type="box" size="0.075 0.035 0.055" pos="0 0 0.095" rgba="0.2 0.8 0.2 1" contype="1" conaffinity="1" group="3"/>
+
+      <!-- Lateral support -->
+      <geom name="lateral_support" type="box" size="0.0925 0.015 0.0325" pos="0.0525 0.05 0.0825" rgba="0.2 0.2 0.8 1" contype="1" conaffinity="1" group="3"/>
+
+      <!-- Upper support -->
+      <geom name="upper_support" type="box" size="0.1 0.066 0.0275" pos="0 -0.049 0.1775" rgba="0.7 0.7 0.0 1" contype="1" conaffinity="1" group="3"/>
+
+
+      <!-- Definition of the sites -->
+      <!-- center of the piece -->
+      <site name="mount_plate_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
+
+      <!-- Hole 1 -->
+      <body name="hole_1_frame_body" pos="0 0.14 0.06" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Hole 2 -->
+      <body name="hole_2_frame_body" pos="0.155 0.05 0.107" quat="0.7071 0 -0.7071 0">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Hole 3 -->
+      <body name="hole_3_frame_body" pos="0.0 0.039 0.182" quat="0.38268 0.9239 0 0">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Hole 4 -->
+      <body name="hole_4_frame_body" pos="0.0 -0.135 0.193" quat="0.7071 -0.7071 0 0">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+
+
+    </body>   
+  </worldbody>
+</mujoco>
