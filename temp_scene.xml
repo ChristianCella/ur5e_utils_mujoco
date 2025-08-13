@@ -230,10 +230,10 @@
       <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
     </default>
   <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
-  </default><actuator><motor joint="shoulder_pan_joint" gear="1" forcerange="-300 300"/>
-    <motor joint="shoulder_lift_joint" gear="1" forcerange="-300 300"/>
-    <motor joint="elbow_joint" gear="1" forcerange="-300 300"/>
-    <motor joint="wrist_1_joint" gear="1" forcerange="-300 300"/>
-    <motor joint="wrist_2_joint" gear="1" forcerange="-300 300"/>
-    <motor joint="wrist_3_joint" gear="1" forcerange="-300 300"/>
+  </default><actuator><motor joint="shoulder_pan_joint" gear="1"/>
+    <motor joint="shoulder_lift_joint" gear="1"/>
+    <motor joint="elbow_joint" gear="1"/>
+    <motor joint="wrist_1_joint" gear="1"/>
+    <motor joint="wrist_2_joint" gear="1"/>
+    <motor joint="wrist_3_joint" gear="1"/>
   </actuator></mujoco>
