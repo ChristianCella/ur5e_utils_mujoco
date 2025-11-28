@@ -18,6 +18,12 @@
 
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
-    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+    <!-- Frame defining the real 0 level -->
+    <site name="world_frame" pos="0 0.0 0.0" quat="1 0 0 0"/>
+    <geom type="capsule" fromto="0 0 0 0.1 0 0" rgba="0.694 0.251 0.192 1" size="0.006" contype="0" conaffinity="0"/>
+    <geom type="capsule" fromto="0 0 0 0 0.1 0" rgba="0.251 0.631 0.318 1" size="0.006" contype="0" conaffinity="0"/>
+    <geom type="capsule" fromto="0 0 0 0 0 0.1" rgba="0.251 0.69 0.851 1" size="0.006" contype="0" conaffinity="0"/>
+    <!-- The floor starts 20 cm below the 'real 0 level'-->
+    <geom name="floor" size="0 0 0.05" type="plane" pos="0 0 -0.2" material="groundplane"/>
   </worldbody>
 </mujoco>
