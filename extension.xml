@@ -1,0 +1,40 @@
+<mujoco model="extension">
+  <compiler angle="radian"/>
+  <option timestep="0.01"/>
+
+  <asset>
+    <!-- Mesh for visualization -->
+    <mesh name="extension_mesh" file="assets/extension.obj"/> 
+    <!-- Mesh for collisions -->
+    <mesh name="extension_collision_mesh" file="assets/extension.stl"/> 
+  </asset>
+
+  <default>
+    <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+  </default>
+
+  <worldbody>
+    <body name="ext_base" pos="0 0 0" quat="1 0 0 0">
+      <site name="ext_base_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
+      <inertial mass="0.33" pos="0 0 0.1" diaginertia="0.005542 0.005542 0.00008353"/>
+      <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+      <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+      <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+
+      <!-- visual mesh -->
+      <geom type="mesh" mesh="extension_mesh" rgba="0.2 0.2 0.2 1" contype="0" conaffinity="0" group="0"/>
+      
+      <!-- collision mesh -->
+      <geom type="mesh" mesh="extension_collision_mesh" rgba="0.8 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+
+      <!-- Site at the top-->
+      <body name="ext_tip" pos="0 0 0.2" quat="1 0 0 0">
+        <site name="ext_tip_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
+        <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+    </body>
+  </worldbody>
+</mujoco>

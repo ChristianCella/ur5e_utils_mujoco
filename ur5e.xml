@@ -58,12 +58,15 @@
 
     <!-- Added Hande gripper -->
     <mesh name="hande_mesh" file="hande_gripper.stl"/>
+
+    <!-- Hand-e gripper collision mesh -->
+    <mesh name="hande_collision_mesh" file="hande_gripper.stl"/>
   </asset>
 
   <worldbody>
     <light name="spotlight" mode="targetbodycom" target="wrist_2_link" pos="0 -1 2"/>
 
-    <body name="base" pos="0 0 0" quat="0 0 0 -1" childclass="ur5e">
+    <body name="base" pos="0 0 0" quat="1 0 0 0" childclass="ur5e">
       <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072"/>
       <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
       <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
@@ -121,7 +124,7 @@
                     diaginertia="0.000132134 9.90863e-05 9.90863e-05"/>
                   <joint name="wrist_3_joint" class="size1"/>
                   <geom material="linkgray" mesh="wrist3" class="visual"/>
-                  <geom name="wrist_3_collision" class="eef_collision" pos="0 0.08 0" quat="1 1 0 0" size="0.04 0.02"/>
+                  <geom name="wrist_3_collision" class="eef_collision" pos="0 0.07 0" quat="1 1 0 0" size="0.04 0.02"/>
                   <site name="ee_site" pos="0 0.1 0" quat="0.7071 -0.7071 0 0"/>
 
                   <!-- Replace tool frames with Hande gripper -->
@@ -132,7 +135,8 @@
 
                     <!-- Hande gripper body -->
                     <body name="tool_base" pos="0 0 0" quat="1 0 0 0">
-                      <inertial mass="2.6" pos="0 0 0.155" diaginertia="0.0143 0.0143 0.0016"/>
+                      <site name="tool_base_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
+                      <inertial mass="1.09" pos="0 0 0.0575" diaginertia="0.05341 0.05447 0.00636"/>
                       <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
                       <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
                       <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
@@ -142,13 +146,25 @@
                             contype="0" conaffinity="0"
                             group="0"/>
 
-                      <!-- Add collision geometry -->
-                      <geom name="hande_collision" type="box" size="0.035 0.025 0.075"
-                            pos="0 0 0.08"
+                      <!-- Collision geometry using hande_gripper.stl -->
+                      <geom name="hande_collision"
+                            type="mesh"
+                            mesh="hande_collision_mesh"
+                            pos="0 0 0.0"
                             rgba="0.7 0.1 0.1 0.3"
                             contype="1" conaffinity="1"
-                            group="3"/>
+                            group="3" />
 
+
+                      <!-- 'Fixed frame' inside the gripper fingers -->
+                      <body name="tool_tip_proxy" pos="0 0 0.157" quat="1 0 0 0">
+                        <site name="tool_tip_proxy_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
+                        <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                      </body>
+                            
+                      <!-- 'Movable frame' inside the gripper fingers -->
                       <body name="tool_tip" pos="0 0 0.0" quat="1 0 0 0">
                         <site name="tool_tip_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
                         <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
