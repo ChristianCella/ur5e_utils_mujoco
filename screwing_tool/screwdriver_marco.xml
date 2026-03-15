@@ -20,8 +20,8 @@
 
   <worldbody>
     <body name="tool_top" pos="0 0 0">
-      <inertial mass="0.752" pos="0 -0.070 0.028" diaginertia="0.0143 0.0143 0.0016"/>
-      <!-- <inertial mass="0.0" pos="0 0.0 0.0" diaginertia="0.0143 0.0143 0.0016"/> -->
+      <inertial mass="0.752" pos="0 -0.070 0.028" diaginertia="0.0143 0.0143 0.0016"/> 
+      <!-- <inertial mass="0.0" pos="0 0.0 0.0" diaginertia="0.0 0.0 0.0"/> -->
       <!-- <inertial mass="0.95" pos="-0.003 -0.0375 0.013" diaginertia="0.0143 0.0143 0.0016"/> -->
       <geom type="mesh" mesh="tool_mesh" rgba="0.2 0.2 0.2 1" contype="0" conaffinity="0" group="0"/>
       <!-- collision cylinder -->

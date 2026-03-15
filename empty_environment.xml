@@ -16,12 +16,22 @@
 
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
-    <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+    <geom name="floor" size="0 0 0.05" type="plane" pos="0.0 0.0 -0.02" material="groundplane"/>
     <!-- Definition of the world frame -->
-    <body name="world_frame" pos="0.0 0.0 -0.02">
+    <body name="world_frame" pos="0.0 0.0 0.0">
         <geom name="world_x_axis" type="capsule" fromto="0 0 0 0.15 0 0" size="0.01" rgba="1 0 0 1" contype="0" conaffinity="0"/>
         <geom name="world_y_axis" type="capsule" fromto="0 0 0 0 0.15 0" size="0.01" rgba="0 1 0 1" contype="0" conaffinity="0"/>
         <geom name="world_z_axis" type="capsule" fromto="0 0 0 0 0 0.15" size="0.01" rgba="0 0 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Optimization search space -->
+    <body name="search_space" pos="-0.555 0.14 -0.025">
+        <geom name="working_area"
+              type="box"
+              size="0.1555 0.231 0.005"
+              rgba="1 0 0 1"
+              contype="0"
+              conaffinity="0"/>
     </body>
 
   </worldbody>

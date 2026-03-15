@@ -1,0 +1,40 @@
+<mujoco model="plate">
+  <compiler angle="radian"/>
+  <option timestep="0.01"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <mesh name="plate_mesh" file="plate.obj"/> 
+    <mesh name="plate_collision_mesh" file="plate.obj"/>
+  </asset>
+
+  <default>
+    <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+  </default>
+
+  <worldbody>
+    <body name="plate" pos="0 0 0">
+
+      <geom type="mesh" mesh="plate_mesh" rgba="0.45 0.45 0.45 1" contype="0" conaffinity="0" group="0"/>
+
+      <!-- Collisions-->
+      <geom name="plate_collision" type="mesh" mesh="plate_collision_mesh" pos="0 0 0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+
+      <!-- center of the piece -->
+      <site name="mount_plate_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
+
+      <!-- Hole -->
+      <body name="hole_1_frame_body" pos="0.066 0.066 0.03" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+    </body>   
+  </worldbody>
+</mujoco>
