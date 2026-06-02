@@ -1,8 +1,7 @@
-# Universal Robots UR5e Description (MJCF)
+# Universal Robots ur5e Description (MJCF)
 
 > [!IMPORTANT]
 > Requires MuJoCo 2.3.3 or later.
-
 ## Changelog
 
 See [CHANGELOG.md](./CHANGELOG.md) for a full history of changes.
