@@ -29,189 +29,189 @@
       <site name="mount_cube_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
 
       <!-- Point 1 -->
-      <body name="hole_1_frame_body" pos="0.15 0.12 0.3" quat="0 1 0 0">
+      <body name="point_1_traj" pos="0.15 0.12 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 2 -->
-      <body name="hole_2_frame_body" pos="0.1 0.12 0.3" quat="0 1 0 0">
+      <body name="point_2_traj" pos="0.1 0.12 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 3 -->
-      <body name="hole_3_frame_body" pos="0.05 0.12 0.3" quat="0 1 0 0">
+      <body name="point_3_traj" pos="0.05 0.12 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
         <!-- Point 4 -->
-      <body name="hole_4_frame_body" pos="0.0 0.12 0.3" quat="0 1 0 0">
+      <body name="point_4_traj" pos="0.0 0.12 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 5 -->
-      <body name="hole_5_frame_body" pos="-0.05 0.12 0.3" quat="0 1 0 0">
+      <body name="point_5_traj" pos="-0.05 0.12 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 6 -->
-      <body name="hole_6_frame_body" pos="-0.1 0.1 0.3" quat="0 1 0 0">
+      <body name="point_6_traj" pos="-0.1 0.12 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 7 -->
-      <body name="hole_7_frame_body" pos="-0.115 0.116 0.3" quat="0 1 0 0">
+      <body name="point_7_traj" pos="-0.115 0.116 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 8 -->
-      <body name="hole_8_frame_body" pos="-0.126 0.105 0.3" quat="0 1 0 0">
+      <body name="point_8_traj" pos="-0.126 0.105 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 9 -->
-      <body name="hole_9_frame_body" pos="-0.130 0.09 0.3" quat="0 1 0 0">
+      <body name="point_9_traj" pos="-0.130 0.09 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 10 -->
-      <body name="hole_10_frame_body" pos="-0.126 0.075 0.3" quat="0 1 0 0">
+      <body name="point_10_traj" pos="-0.126 0.075 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 11 -->
-      <body name="hole_11_frame_body" pos="-0.115 0.064 0.3" quat="0 1 0 0">
+      <body name="point_11_traj" pos="-0.115 0.064 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 12 -->
-      <body name="hole_12_frame_body" pos="-0.1 0.06 0.3" quat="0 1 0 0">
+      <body name="point_12_traj" pos="-0.1 0.06 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 13 -->
-      <body name="hole_13_frame_body" pos="-0.05 0.06 0.3" quat="0 1 0 0">
+      <body name="point_13_traj" pos="-0.05 0.06 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 14 -->
-      <body name="hole_14_frame_body" pos="-0.0 0.06 0.3" quat="0 1 0 0">
+      <body name="point_14_traj" pos="-0.0 0.06 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 15 -->
-      <body name="hole_15_frame_body" pos="0.05 0.06 0.3" quat="0 1 0 0">
+      <body name="point_15_traj" pos="0.05 0.06 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 16 -->
-      <body name="hole_16_frame_body" pos="0.1 0.06 0.3" quat="0 1 0 0">
+      <body name="point_16_traj" pos="0.1 0.06 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 17 -->
-      <body name="hole_17_frame_body" pos="0.115 0.056 0.3" quat="0 1 0 0">
+      <body name="point_17_traj" pos="0.115 0.056 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 18 -->
-      <body name="hole_18_frame_body" pos="0.126 0.045 0.3" quat="0 1 0 0">
+      <body name="point_18_traj" pos="0.126 0.045 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 19 -->
-      <body name="hole_19_frame_body" pos="0.13 0.03 0.3" quat="0 1 0 0">
+      <body name="point_19_traj" pos="0.13 0.03 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 20 -->
-      <body name="hole_20_frame_body" pos="0.126 0.015 0.3" quat="0 1 0 0">
+      <body name="point_20_traj" pos="0.126 0.015 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 21 -->
-      <body name="hole_21_frame_body" pos="0.115 0.004 0.3" quat="0 1 0 0">
+      <body name="point_21_traj" pos="0.115 0.004 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 22 -->
-      <body name="hole_22_frame_body" pos="0.1 0.0 0.3" quat="0 1 0 0">
+      <body name="point_22_traj" pos="0.1 0.0 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 23 -->
-      <body name="hole_23_frame_body" pos="0.05 0.0 0.3" quat="0 1 0 0">
+      <body name="point_23_traj" pos="0.05 0.0 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 24 -->
-      <body name="hole_24_frame_body" pos="0.0 0.0 0.3" quat="0 1 0 0">
+      <body name="point_24_traj" pos="0.0 0.0 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 25 -->
-      <body name="hole_25_frame_body" pos="-0.05 0.0 0.3" quat="0 1 0 0">
+      <body name="point_25_traj" pos="-0.05 0.0 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 26 -->
-      <body name="hole_26_frame_body" pos="-0.1 0.0 0.3" quat="0 1 0 0">
+      <body name="point_26_traj" pos="-0.1 0.0 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 27 -->
-      <body name="hole_27_frame_body" pos="-0.15 0.0 0.3" quat="0 1 0 0">
+      <body name="point_27_traj" pos="-0.15 0.0 0.32" quat="0 1 0 0">
         <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
