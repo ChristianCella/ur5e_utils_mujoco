@@ -1,5 +1,5 @@
 <mujoco model="ur5e scene">
-  <compiler angle="radian" meshdir="ur5e/assets" autolimits="true"/>
+  <compiler autolimits="true" balanceinertia="true" meshdir="gofa5/assets" angle="radian" coordinate="local"/>
   <statistic center="0.3 0 0.4" extent="0.8"/>
 
   <visual>
@@ -12,33 +12,17 @@
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
     <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
-  <material class="ur5e" name="black" rgba="0.033 0.033 0.033 1"/>
-    <material class="ur5e" name="jointgray" rgba="0.278 0.278 0.278 1"/>
-    <material class="ur5e" name="linkgray" rgba="0.82 0.82 0.82 1"/>
-    <material class="ur5e" name="urblue" rgba="0.49 0.678 0.8 1"/>
-
-    <mesh file="base_0.obj"/>
-    <mesh file="base_1.obj"/>
-    <mesh file="shoulder_0.obj"/>
-    <mesh file="shoulder_1.obj"/>
-    <mesh file="shoulder_2.obj"/>
-    <mesh file="upperarm_0.obj"/>
-    <mesh file="upperarm_1.obj"/>
-    <mesh file="upperarm_2.obj"/>
-    <mesh file="upperarm_3.obj"/>
-    <mesh file="forearm_0.obj"/>
-    <mesh file="forearm_1.obj"/>
-    <mesh file="forearm_2.obj"/>
-    <mesh file="forearm_3.obj"/>
-    <mesh file="wrist1_0.obj"/>
-    <mesh file="wrist1_1.obj"/>
-    <mesh file="wrist1_2.obj"/>
-    <mesh file="wrist2_0.obj"/>
-    <mesh file="wrist2_1.obj"/>
-    <mesh file="wrist2_2.obj"/>
-    <mesh file="wrist3.obj"/>
-  <mesh name="tool_mesh" file="welding_gun.obj"/> 
-    <mesh name="welding_gun_collision_mesh" file="welding_gun.obj"/>
+  <material name="Gofa/white" class="Gofa/" rgba="1 1 1 1"/>
+    <material name="Gofa/grey" class="Gofa/" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1"/>
+    <mesh name="Gofa/base" class="Gofa/" file="base_link.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link1" class="Gofa/" file="link_1.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link2" class="Gofa/" file="link_2.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link3" class="Gofa/" file="link_3.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link4" class="Gofa/" file="link_4.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link5" class="Gofa/" file="link_5.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link6" class="Gofa/" file="link_6.stl" scale="1 1 1"/>
+  <mesh name="tool_mesh" file="painting_gun.obj"/> 
+    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
   </asset>
 
   <worldbody>
@@ -62,135 +46,74 @@
               conaffinity="0"/>
     </body>-->
 
-  <light name="spotlight" mode="targetbodycom" target="wrist_2_link" pos="0 -1 2"/>
+  <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <body name="Gofa/Robot">
+      <body name="base" pos="0 0 0">
+        <inertial pos="-0.0012013793465437 -0.000175191786981708 0.0862146007385352" euler="0 0 0" mass="3.50083457958494" diaginertia="0.0153015257917955 0.0159333503953857 0.0112162302268266"/>
+        <geom name="Gofa/geom_base_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/base"/>
+        <geom name="Gofa/geom_base_collision" class="Gofa/collision" mesh="Gofa/base"/>
 
-    <body name="base" pos="0 0 0.0" quat="1 0 0 0" childclass="ur5e">
-      <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072"/>
-      <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom mesh="base_0" material="black" class="visual"/>
-      <geom mesh="base_1" material="jointgray" class="visual"/>
+        <body name="link_1" pos="0 0 0.1875" euler="0 0 0">
+          <inertial pos="2.08682453325091e-6 0.0103608399967513 0.0705307203199506" euler="0 0 0" mass="2.76743491139404" diaginertia="0.0115158625894577 0.006494848329231 0.0109446835358581"/>
+          <joint name="joint_1" class="ur5e/type_joint1" axis="0 0 1"/>
+          <geom name="Gofa/geom_link1_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/link1"/>
+          <geom name="Gofa/geom_link1_collision" class="Gofa/collision" mesh="Gofa/link1"/>
 
-      <!-- COM marker -->
-      <geom name="base_com" type="sphere" pos="0.0 0.0 0.0" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+          <body name="link_2" pos="0 -0.085 0.0775" euler="0 0 0">
+            <inertial pos="1.34018352211628E-06 -0.0500118376116071 0.222001399322246" euler="0 0 0" mass="4.28904168670464" diaginertia="0.130524729873898 0.133278449324229 0.00669457974697178"/>
+            <joint name="joint_2" class="ur5e/type_joint1" axis="0 1 0"/>
+            <geom name="Gofa/geom_link2_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/link2"/>
+            <geom name="Gofa/geom_link2_collision" class="Gofa/collision" mesh="Gofa/link2"/>
 
-      <body name="shoulder_link" pos="0 0 0.163">
-        <inertial mass="3.761" pos="0 0.00193 -0.02561" diaginertia="0.0067 0.0064 0.00666"/>
-        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-        <joint name="shoulder_pan_joint" class="size3" axis="0 0 1"/>
-        <geom mesh="shoulder_0" material="urblue" class="visual"/>
-        <geom mesh="shoulder_1" material="black" class="visual"/>
-        <geom mesh="shoulder_2" material="jointgray" class="visual"/>
-        <geom name="shoulder_collision" class="collision" size="0.06 0.06" pos="0 0 -0.04"/>
+            <body name="link_3" pos="0 -0.00100000000000007 0.444" euler="0 0 0">
+              <inertial pos="0.0128129281453599 0.0944171780907046 0.0247427540642403" euler="0 0 0" mass="3.38333107992875" diaginertia="0.0175626138728642 0.0140230068919562 0.013275205067567"/>
+              <joint name="joint_3" range="-3.926990817 1.4835298642" axis="0 1 0"/>
+              <geom name="Gofa/geom_link3_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/link3"/>
+              <geom name="Gofa/geom_link3_collision" class="Gofa/collision" mesh="Gofa/link3"/>
 
-        <!-- COM marker -->
-        <geom name="shoulder_link_com" type="sphere" pos="0.0 0.00193 -0.02561" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+              <body name="link_4" pos="0.096 0.0860000000000001 0.11" euler="0 0 0">
+                <inertial pos="0.160558561602322 0.041976811408979 -2.36623354021859E-07" euler="0 0 0" mass="2.77857535641324" diaginertia="0.00881683095901354 0.0340754175571832 0.0389358932156922"/>
+                <joint name="joint_4" class="ur5e/type_joint1" axis="1 0 0"/>
+                <geom name="Gofa/geom_link4_visual" class="Gofa/visual" material="Gofa/white" mesh="Gofa/link4"/>
+                <geom name="Gofa/geom_link4_collision" class="Gofa/collision" mesh="Gofa/link4"/>
 
-        <body name="upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
-          <inertial mass="8.058" pos="0.0 -0.01464 0.2125" diaginertia="0.0149 0.3564 0.3553"/>
-          <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-          <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-          <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-          <joint name="shoulder_lift_joint" class="size3"/>
-          <geom mesh="upperarm_0" material="linkgray" class="visual"/>
-          <geom mesh="upperarm_1" material="black" class="visual"/>
-          <geom mesh="upperarm_2" material="jointgray" class="visual"/>
-          <geom mesh="upperarm_3" material="urblue" class="visual"/>
-          <geom name="upper_arm_collision_outer" class="collision" pos="0 -0.04 0" quat="1 1 0 0" size="0.06 0.06"/>
-          <geom name="upper_arm_collision_inner" class="collision" size="0.05 0.2" pos="0 0 0.2"/>
+                <body name="link_5" pos="0.374 0.0744999999999998 0" euler="0 0 0">
+                  <inertial pos="-0.0147152361879962 -0.0785646469392633 0.0427558021601431" euler="0 0 0" mass="3.01105814739001" diaginertia="0.0114597336686444 0.013561904467501 0.0108480119549914"/>
+                  <joint name="joint_5" class="ur5e/type_joint1" axis="0 1 0"/>
+                  <geom name="Gofa/geom_link5_visual" class="Gofa/visual" material="Gofa/white" mesh="Gofa/link5"/>
+                  <geom name="Gofa/geom_link5_collision" class="Gofa/collision" mesh="Gofa/link5"/>
 
-          <!-- COM marker -->
-          <geom name="upper_arm_com" type="sphere" pos="0.0 -0.01464 0.2125" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+                  <body name="link_6" pos="0.0679999999999995 -0.0744999999999998 0.0800000000000003" euler="0 0 0">
+                    <inertial pos="0.0137506852604966 0.000239804131398652 -0.000341962798940165" euler="0 0 0" mass="0.146500988015653" diaginertia="0.000128977630055306 0 7.65022909768016e-5"/>
+                    <joint name="joint_6" range="-4.7123889804 4.7123889804" axis="1 0 0"/>
+                    <geom name="Gofa/geom_link6_visual" class="Gofa/visual" rgba="0.6 0.6 0.6 1" mesh="Gofa/link6"/>
+                    <geom name="Gofa/geom_link6_collision" class="Gofa/collision" mesh="Gofa/link6"/>
 
-          <body name="forearm_link" pos="0 -0.131 0.425">
-            <inertial mass="2.846" pos="0.0 0.0155 0.1922" diaginertia="0.0025 0.0551 0.0546"/>
-            <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-            <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-            <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-            <joint name="elbow_joint" class="size3_limited"/>
-            <geom mesh="forearm_0" material="urblue" class="visual"/>
-            <geom mesh="forearm_1" material="linkgray" class="visual"/>
-            <geom mesh="forearm_2" material="black" class="visual"/>
-            <geom mesh="forearm_3" material="jointgray" class="visual"/>
-            <geom name="forearm_collision_outer" class="collision" pos="0 0.08 0" quat="1 1 0 0" size="0.055 0.06"/>
-            <geom name="forearm_collision_inner" class="collision" size="0.038 0.19" pos="0 0 0.2"/>
+                    <site name="ee_site" pos="0.0326 0 0" quat="0.7071 0 0.7071 0"/>
+                    <body name="ee_frame_visual_only" pos="0.0326 0 0" quat="0.7071 0 0.7071 0">
+                      <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
 
-            <!-- COM marker -->
-            <geom name="forearm_com" type="sphere" pos="0.0 0.0155 0.1922" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
-
-            <body name="wrist_1_link" pos="0 0 0.392" quat="1 0 1 0">
-              <inertial mass="1.37" pos="0.0 0.11 0.03" diaginertia="0.0012 0.0012 0.0009"/>
-              <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-              <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-              <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-              <joint name="wrist_1_joint" class="size1"/>
-              <geom mesh="wrist1_0" material="black" class="visual"/>
-              <geom mesh="wrist1_1" material="urblue" class="visual"/>
-              <geom mesh="wrist1_2" material="jointgray" class="visual"/>
-              <geom name="wrist_1_collision" class="collision" pos="0 0.05 0" quat="1 1 0 0" size="0.05 0.07"/>
-
-              <!-- COM marker -->
-              <geom name="wrist_1_com" type="sphere" pos="0.0 0.11 0.03" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
-
-              <body name="wrist_2_link" pos="0 0.127 0">
-                <inertial mass="1.3" pos="0.0 0.02 0.09" diaginertia="0.0012 0.0012 0.0009"/>
-                <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-                <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-                <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-                <joint name="wrist_2_joint" axis="0 0 1" class="size1"/>
-                <geom mesh="wrist2_0" material="black" class="visual"/>
-                <geom mesh="wrist2_1" material="urblue" class="visual"/>
-                <geom mesh="wrist2_2" material="jointgray" class="visual"/>
-                <geom name="wrist_2_collision_lower" class="collision" size="0.04 0.06" pos="0 0 0.04"/>
-                <geom name="wrist_2_collision_upper" class="collision" pos="0 0.02 0.1" quat="1 1 0 0" size="0.04 0.04"/>
-
-                <!-- COM marker -->
-                <geom name="wrist_2_com" type="sphere" pos="0.0 0.02 0.09" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
-
-                <body name="wrist_3_link" pos="0 0 0.1">
-                  <inertial mass="0.365" pos="0.0 0.07 0.0" quat="1 0 0 1" diaginertia="0.001 0.001 0.001"/>
-                  <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-                  <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-                  <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-                  <joint name="wrist_3_joint" class="size1"/>
-                  <geom material="linkgray" mesh="wrist3" class="visual"/>
-                  <geom name="wrist_3_collision" class="eef_collision" pos="0 0.07 0" quat="1 1 0 0" size="0.04 0.02"/>
-                  
-                  <!-- COM marker -->
-                  <geom name="wrist_3_com" type="sphere" pos="0.0 0.07 0.0" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
-                  
-                  
-                  <site name="ee_site" pos="0 0.1 0" quat="0.7071 -0.7071 0 0"/>
-
-                  <!-- Replace tool frames with Hande gripper -->
-                  <body name="ee_frame_visual_only" pos="0 0.1 0" quat="0.7071 -0.7071 0 0">
-                    <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002"/>
-                    <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002"/>
-                    <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002"/>
-                                              
-                    <!-- 'Movable frame' inside the gripper fingers -->
-                    <body name="tool_frame" pos="0 0 0.0" quat="1 0 0 0">
-                      <site name="tool_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
-                      <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-                      <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-                      <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-                    </body>
-                  <body name="tool_base" pos="0 0 0">
-      <inertial mass="0.752" pos="0 -0.070 0.028" diaginertia="0.0143 0.0143 0.0016"/> 
-      <!-- <inertial mass="0.0" pos="0 0.0 0.0" diaginertia="0.0 0.0 0.0"/> -->
-      <!-- <inertial mass="0.95" pos="-0.003 -0.0375 0.013" diaginertia="0.0143 0.0143 0.0016"/> -->
+                      <!-- Reference frame attached @ tool tip -->
+                      <body name="tool_frame" pos="0 0 0" quat="1 0 0 0">
+                        <site name="tool_site" pos="0 0 0" quat="1 0 0 0"/>
+                        <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                      </body>
+                    <body name="tool_base" pos="0 0 0">
+      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
       <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
-      <!-- collision cylinder -->
-      <geom name="welding_gun_collision" type="mesh" mesh="welding_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+      <!-- collision mesh -->
+      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
       <!-- Marker (red sphere) to specify the origin -->
       <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
       <!-- Marker (green sphere) to specify the point of application of the weight -->
-      <!-- <geom type="sphere" size="0.005" pos="0 -0.070 0.028" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
+      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
     </body>
   </body>
+                  </body>
                 </body>
               </body>
             </body>
@@ -200,34 +123,26 @@
     </body>
   <body name="reference_target_1" pos="0.1 0.1 0.1"><geom name="reference_x_axis1" type="capsule" fromto="0 0 0 0.1 0 0" size="0.005" rgba="1 0 0 0.5" contype="0" conaffinity="0"/><geom name="reference_y_axis1" type="capsule" fromto="0 0 0 0 0.1 0" size="0.005" rgba="0 1 0 0.5" contype="0" conaffinity="0"/><geom name="reference_z_axis1" type="capsule" fromto="0 0 0 0 0 0.1" size="0.005" rgba="0 0 1 0.5" contype="0" conaffinity="0"/></body></worldbody>
 
-<default><default class="ur5e">
+<default><default class="Gofa/">
       <material specular="0.5" shininess="0.25"/>
-      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1"/>
-      <general gaintype="fixed" biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="2000" biasprm="0 -2000 -400" forcerange="-150 150"/>
-      <default class="size3">
-        <default class="size3_limited">
-          <joint range="-6.28319 6.28319"/>
-          <general ctrlrange="-6.28319 6.28319"/>
+      <default class="ur5e/type_joint1">
+        <joint range="-3.1415000000000002 3.1415000000000002"/>
+        <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
+      </default>
+      <default class="Gofa/visual">
+        <geom type="mesh" group="2" contype="0" conaffinity="0"/>
+      </default>
+      <default class="Gofa/collision">
+        <geom type="mesh" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        <default class="Gofa/eef_collision">
+          <geom type="cylinder" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
         </default>
       </default>
-      <default class="size1">
-        <general gainprm="500" biasprm="0 -500 -100" forcerange="-28 28"/>
-      </default>
-      <default class="visual">
-        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
-      </default>
-      <default class="collision">
-        <geom type="capsule" group="3"/>
-        <default class="eef_collision">
-          <geom type="cylinder"/>
-        </default>
-      </default>
-      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
     </default>
-  </default><actuator><motor joint="shoulder_pan_joint" gear="1"/>
-    <motor joint="shoulder_lift_joint" gear="1"/>
-    <motor joint="elbow_joint" gear="1"/>
-    <motor joint="wrist_1_joint" gear="1"/>
-    <motor joint="wrist_2_joint" gear="1"/>
-    <motor joint="wrist_3_joint" gear="1"/>
+  </default><actuator><motor joint="joint_1" gear="1"/>
+    <motor joint="joint_2" gear="1"/>
+    <motor joint="joint_3" gear="1"/>
+    <motor joint="joint_4" gear="1"/>
+    <motor joint="joint_5" gear="1"/>
+    <motor joint="joint_6" gear="1"/>
   </actuator></mujoco>
