@@ -1,0 +1,364 @@
+<mujoco model="ur5e scene">
+  <compiler angle="radian" meshdir="ur5e/assets" autolimits="true"/>
+  <statistic center="0.3 0 0.4" extent="0.8"/>
+
+  <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="120" elevation="-20"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+  <material class="ur5e" name="black" rgba="0.033 0.033 0.033 1"/>
+    <material class="ur5e" name="jointgray" rgba="0.278 0.278 0.278 1"/>
+    <material class="ur5e" name="linkgray" rgba="0.82 0.82 0.82 1"/>
+    <material class="ur5e" name="urblue" rgba="0.49 0.678 0.8 1"/>
+
+    <mesh file="base_0.obj"/>
+    <mesh file="base_1.obj"/>
+    <mesh file="shoulder_0.obj"/>
+    <mesh file="shoulder_1.obj"/>
+    <mesh file="shoulder_2.obj"/>
+    <mesh file="upperarm_0.obj"/>
+    <mesh file="upperarm_1.obj"/>
+    <mesh file="upperarm_2.obj"/>
+    <mesh file="upperarm_3.obj"/>
+    <mesh file="forearm_0.obj"/>
+    <mesh file="forearm_1.obj"/>
+    <mesh file="forearm_2.obj"/>
+    <mesh file="forearm_3.obj"/>
+    <mesh file="wrist1_0.obj"/>
+    <mesh file="wrist1_1.obj"/>
+    <mesh file="wrist1_2.obj"/>
+    <mesh file="wrist2_0.obj"/>
+    <mesh file="wrist2_1.obj"/>
+    <mesh file="wrist2_2.obj"/>
+    <mesh file="wrist3.obj"/>
+  <mesh name="tool_mesh" file="painting_gun.obj"/> 
+    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
+  <mesh name="reconstructed_mesh" file="reconstructed.obj"/> 
+    <mesh name="reconstructed_collision_mesh" file="reconstructed.obj"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <geom name="floor" size="0 0 0.05" type="plane" pos="0.0 0.0 0.0" material="groundplane"/>
+    <!-- Definition of the world frame -->
+    <body name="world_frame" pos="0.0 0.0 0.0">
+        <geom name="world_x_axis" type="capsule" fromto="0 0 0 0.15 0 0" size="0.01" rgba="1 0 0 1" contype="0" conaffinity="0"/>
+        <geom name="world_y_axis" type="capsule" fromto="0 0 0 0 0.15 0" size="0.01" rgba="0 1 0 1" contype="0" conaffinity="0"/>
+        <geom name="world_z_axis" type="capsule" fromto="0 0 0 0 0 0.15" size="0.01" rgba="0 0 1 1" contype="0" conaffinity="0"/>
+    </body>
+
+    <!-- Optimization search space -->
+    <!-- 
+    <body name="search_space" pos="-0.555 0.14 -0.025">
+        <geom name="working_area"
+              type="box"
+              size="0.1555 0.231 0.005"
+              rgba="1 0 0 1"
+              contype="0"
+              conaffinity="0"/>
+    </body>-->
+
+  <light name="spotlight" mode="targetbodycom" target="wrist_2_link" pos="0 -1 2"/>
+
+    <body name="base" pos="0 0 0.0" quat="1 0 0 0" childclass="ur5e">
+      <inertial mass="4.0" pos="0 0 0" diaginertia="0.00443333156 0.00443333156 0.0072"/>
+      <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+      <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+      <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      <geom mesh="base_0" material="black" class="visual"/>
+      <geom mesh="base_1" material="jointgray" class="visual"/>
+
+      <!-- COM marker -->
+      <geom name="base_com" type="sphere" pos="0.0 0.0 0.0" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+
+      <body name="shoulder_link" pos="0 0 0.163">
+        <inertial mass="3.761" pos="0 0.00193 -0.02561" diaginertia="0.0067 0.0064 0.00666"/>
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+        <joint name="shoulder_pan_joint" class="size3" axis="0 0 1"/>
+        <geom mesh="shoulder_0" material="urblue" class="visual"/>
+        <geom mesh="shoulder_1" material="black" class="visual"/>
+        <geom mesh="shoulder_2" material="jointgray" class="visual"/>
+        <geom name="shoulder_collision" class="collision" size="0.06 0.06" pos="0 0 -0.04"/>
+
+        <!-- COM marker -->
+        <geom name="shoulder_link_com" type="sphere" pos="0.0 0.00193 -0.02561" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+
+        <body name="upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
+          <inertial mass="8.058" pos="0.0 -0.01464 0.2125" diaginertia="0.0149 0.3564 0.3553"/>
+          <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+          <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+          <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+          <joint name="shoulder_lift_joint" class="size3"/>
+          <geom mesh="upperarm_0" material="linkgray" class="visual"/>
+          <geom mesh="upperarm_1" material="black" class="visual"/>
+          <geom mesh="upperarm_2" material="jointgray" class="visual"/>
+          <geom mesh="upperarm_3" material="urblue" class="visual"/>
+          <geom name="upper_arm_collision_outer" class="collision" pos="0 -0.04 0" quat="1 1 0 0" size="0.06 0.06"/>
+          <geom name="upper_arm_collision_inner" class="collision" size="0.05 0.2" pos="0 0 0.2"/>
+
+          <!-- COM marker -->
+          <geom name="upper_arm_com" type="sphere" pos="0.0 -0.01464 0.2125" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+
+          <body name="forearm_link" pos="0 -0.131 0.425">
+            <inertial mass="2.846" pos="0.0 0.0155 0.1922" diaginertia="0.0025 0.0551 0.0546"/>
+            <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+            <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+            <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+            <joint name="elbow_joint" class="size3_limited"/>
+            <geom mesh="forearm_0" material="urblue" class="visual"/>
+            <geom mesh="forearm_1" material="linkgray" class="visual"/>
+            <geom mesh="forearm_2" material="black" class="visual"/>
+            <geom mesh="forearm_3" material="jointgray" class="visual"/>
+            <geom name="forearm_collision_outer" class="collision" pos="0 0.08 0" quat="1 1 0 0" size="0.055 0.06"/>
+            <geom name="forearm_collision_inner" class="collision" size="0.038 0.19" pos="0 0 0.2"/>
+
+            <!-- COM marker -->
+            <geom name="forearm_com" type="sphere" pos="0.0 0.0155 0.1922" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+
+            <body name="wrist_1_link" pos="0 0 0.392" quat="1 0 1 0">
+              <inertial mass="1.37" pos="0.0 0.11 0.03" diaginertia="0.0012 0.0012 0.0009"/>
+              <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+              <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+              <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+              <joint name="wrist_1_joint" class="size1"/>
+              <geom mesh="wrist1_0" material="black" class="visual"/>
+              <geom mesh="wrist1_1" material="urblue" class="visual"/>
+              <geom mesh="wrist1_2" material="jointgray" class="visual"/>
+              <geom name="wrist_1_collision" class="collision" pos="0 0.05 0" quat="1 1 0 0" size="0.05 0.07"/>
+
+              <!-- COM marker -->
+              <geom name="wrist_1_com" type="sphere" pos="0.0 0.11 0.03" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+
+              <body name="wrist_2_link" pos="0 0.127 0">
+                <inertial mass="1.3" pos="0.0 0.02 0.09" diaginertia="0.0012 0.0012 0.0009"/>
+                <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                <joint name="wrist_2_joint" axis="0 0 1" class="size1"/>
+                <geom mesh="wrist2_0" material="black" class="visual"/>
+                <geom mesh="wrist2_1" material="urblue" class="visual"/>
+                <geom mesh="wrist2_2" material="jointgray" class="visual"/>
+                <geom name="wrist_2_collision_lower" class="collision" size="0.04 0.06" pos="0 0 0.04"/>
+                <geom name="wrist_2_collision_upper" class="collision" pos="0 0.02 0.1" quat="1 1 0 0" size="0.04 0.04"/>
+
+                <!-- COM marker -->
+                <geom name="wrist_2_com" type="sphere" pos="0.0 0.02 0.09" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+
+                <body name="wrist_3_link" pos="0 0 0.1">
+                  <inertial mass="0.365" pos="0.0 0.07 0.0" quat="1 0 0 1" diaginertia="0.001 0.001 0.001"/>
+                  <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                  <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                  <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                  <joint name="wrist_3_joint" class="size1"/>
+                  <geom material="linkgray" mesh="wrist3" class="visual"/>
+                  <geom name="wrist_3_collision" class="eef_collision" pos="0 0.07 0" quat="1 1 0 0" size="0.04 0.02"/>
+                  
+                  <!-- COM marker -->
+                  <geom name="wrist_3_com" type="sphere" pos="0.0 0.07 0.0" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+                  
+                  
+                  <site name="ee_site" pos="0 0.1 0" quat="0.7071 -0.7071 0 0"/>
+
+                  <!-- Replace tool frames with Hande gripper -->
+                  <body name="ee_frame_visual_only" pos="0 0.1 0" quat="0.7071 -0.7071 0 0">
+                    <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002"/>
+                    <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002"/>
+                    <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002"/>
+                                              
+                    <!-- 'Movable frame' inside the gripper fingers -->
+                    <body name="tool_frame" pos="0 0 0.0" quat="1 0 0 0">
+                      <site name="tool_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
+                      <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                    </body>
+                  <body name="tool_base" pos="0 0 0">
+      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
+      <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
+      <!-- collision mesh -->
+      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+      <!-- Marker (red sphere) to specify the origin -->
+      <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
+      <!-- Marker (green sphere) to specify the point of application of the weight -->
+      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
+    </body>
+  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  <body name="reconstructed" pos="0 0 0">
+
+      <geom type="mesh" mesh="reconstructed_mesh" rgba="0.45 0.45 0.45 1" contype="0" conaffinity="0" group="0"/>
+
+      <!-- Collisions-->
+      <geom name="reconstructed_collision" type="mesh" mesh="reconstructed_collision_mesh" pos="0 0 0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+
+      <!-- center of the piece -->
+      <site name="mount_reconstructed_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
+
+      <!-- Point 0 (waypoint_id: 0:0) -->
+      <body name="point_0_traj" pos="1.2598389702191433 -0.12177624973664676 0.4399665670052016" quat="-0.04613876755134496 0.705589065223876 0.04630411468214134 0.7055998966332429">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 1 (waypoint_id: 0:1) -->
+      <body name="point_1_traj" pos="1.259763160310089 -0.1217283074173864 0.6850079842804658" quat="-0.04668196970576362 0.7055047100423981 0.04757209379449118 0.7055641669645576">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 2 (waypoint_id: 0:2) -->
+      <body name="point_2_traj" pos="1.2547960037013313 -0.12182916717120795 0.9300164291260314" quat="-0.00397026772020063 0.7110567723435863 0.003974395827144443 0.7031121586605941">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 3 (waypoint_id: 0:3) -->
+      <body name="point_3_traj" pos="1.2530619008935922 -0.12183167259901001 1.1750466678957883" quat="-0.003220286608168738 0.6946829212760613 0.014887489021399898 0.7191548034409257">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 4 (waypoint_id: 0:4) -->
+      <body name="point_4_traj" pos="1.2518535447323198 -0.11720248948405182 1.2074304228377515" quat="0.09380679926039524 0.6873930557166241 0.10708715450980319 0.7121961897567801">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 5 (waypoint_id: 0:5) -->
+      <body name="point_5_traj" pos="1.250579077716589 -0.10363472293113687 1.2371895329969869" quat="0.19427477954965808 0.6651366299420344 0.2038875553284155 0.6915782228515349">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 6 (waypoint_id: 0:6) -->
+      <body name="point_6_traj" pos="1.2499417164446514 -0.082209300807677 1.2619171366122646" quat="0.28436833850668014 0.6384818649975174 0.30316137677580185 0.6477412567959854">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 7 (waypoint_id: 0:7) -->
+      <body name="point_7_traj" pos="1.2492818173015212 -0.05468362155685173 1.2796051555888968" quat="0.373712001040846 0.5967888674398254 0.39103470461403883 0.5926839358084109">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 8 (waypoint_id: 0:8) -->
+      <body name="point_8_traj" pos="1.2489003220006754 -0.02328012328022956 1.2888222800838822" quat="0.45421848328420716 0.5350974524226776 0.47194894736979587 0.5334983382638567">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 9 (waypoint_id: 0:9) -->
+      <body name="point_9_traj" pos="1.2483614813989392 0.009442872994473488 1.2888186477746328" quat="0.516745022652 0.47584169364247475 0.5519565870490325 0.4493252609958948">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 10 (waypoint_id: 0:10) -->
+      <body name="point_10_traj" pos="1.2476536443505697 0.04083266226540186 1.2795941801211046" quat="0.5754893548082831 0.39235007769840685 0.6141195387914385 0.3711207500356063">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 11 (waypoint_id: 0:11) -->
+      <body name="point_11_traj" pos="1.2464343888942682 0.06833406898763948 1.2618934938164896" quat="0.6225156505689229 0.30080013231600067 0.663777577049746 0.28529436272277736">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 12 (waypoint_id: 0:12) -->
+      <body name="point_12_traj" pos="1.2450131780289422 0.08972550213381132 1.2371520134246834" quat="0.6800630610469541 0.19864591129370165 0.6769247389486986 0.1995668627928437">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 13 (waypoint_id: 0:13) -->
+      <body name="point_13_traj" pos="1.2455176154238203 0.10333517722037279 1.2073877125175625" quat="0.709302432404664 0.08954491557152504 0.6901910012278887 0.11183983773307374">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 14 (waypoint_id: 0:14) -->
+      <body name="point_14_traj" pos="1.2464019916872493 0.1080147397435726 1.1750017736362752" quat="0.7179187142204702 -0.004974954926763788 0.6959577285325192 0.014519286875054207">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 15 (waypoint_id: 0:15) -->
+      <body name="point_15_traj" pos="1.2500635306306838 0.10806062144646351 0.8555715332046986" quat="0.6669217029486044 -1.5128274543391464e-05 0.7451278022755053 -1.3540461905113805e-05">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 16 (waypoint_id: 0:16) -->
+      <body name="point_16_traj" pos="1.2498616250240235 0.10798897139509835 0.5361152494027287" quat="0.7081172490108711 -0.0015522251524811006 0.7060917737959523 0.0013997242719904835">
+        <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+    </body>   
+  </worldbody>
+
+<default><default class="ur5e">
+      <material specular="0.5" shininess="0.25"/>
+      <joint axis="0 1 0" range="-6.28319 6.28319" armature="0.1"/>
+      <general gaintype="fixed" biastype="affine" ctrlrange="-6.2831 6.2831" gainprm="2000" biasprm="0 -2000 -400" forcerange="-150 150"/>
+      <default class="size3">
+        <default class="size3_limited">
+          <joint range="-6.28319 6.28319"/>
+          <general ctrlrange="-6.28319 6.28319"/>
+        </default>
+      </default>
+      <default class="size1">
+        <general gainprm="500" biasprm="0 -500 -100" forcerange="-28 28"/>
+      </default>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2"/>
+      </default>
+      <default class="collision">
+        <geom type="capsule" group="3"/>
+        <default class="eef_collision">
+          <geom type="cylinder"/>
+        </default>
+      </default>
+      <site size="0.001" rgba="0.5 0.5 0.5 0.3" group="4"/>
+    </default>
+  <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+  </default><actuator><motor joint="shoulder_pan_joint" gear="1"/>
+    <motor joint="shoulder_lift_joint" gear="1"/>
+    <motor joint="elbow_joint" gear="1"/>
+    <motor joint="wrist_1_joint" gear="1"/>
+    <motor joint="wrist_2_joint" gear="1"/>
+    <motor joint="wrist_3_joint" gear="1"/>
+  </actuator></mujoco>

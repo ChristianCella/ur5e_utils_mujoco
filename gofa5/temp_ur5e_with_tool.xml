@@ -1,18 +1,36 @@
-<mujoco model="ur5e scene">
-  <compiler autolimits="true" balanceinertia="true" meshdir="gofa5/assets" angle="radian" coordinate="local"/>
-  <statistic center="0.3 0 0.4" extent="0.8"/>
-
+<mujoco>
+  <compiler autolimits="true" balanceinertia="true" meshdir="assets" angle="radian" coordinate="local"/>
+  <option integrator="implicitfast"/>
+  <option gravity="0 0 0"/>
+  <size memory="2M"/>
+  
   <visual>
+    <global azimuth="120" elevation="-20"/> 
     <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
     <rgba haze="0.15 0.25 0.35 1"/>
-    <global azimuth="120" elevation="-20"/>
   </visual>
+  
+  <default>
+    <default class="Gofa/">
+      <material specular="0.5" shininess="0.25"/>
+      <default class="ur5e/type_joint1">
+        <joint range="-3.1415000000000002 3.1415000000000002"/>
+        <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
+      </default>
+      <default class="Gofa/visual">
+        <geom type="mesh" group="2" contype="0" conaffinity="0"/>
+      </default>
+      <default class="Gofa/collision">
+        <geom type="mesh" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        <default class="Gofa/eef_collision">
+          <geom type="cylinder" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        </default>
+      </default>
+    </default>
+  </default>
 
   <asset>
-    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
-    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
-    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
-  <material name="Gofa/white" class="Gofa/" rgba="1 1 1 1"/>
+    <material name="Gofa/white" class="Gofa/" rgba="1 1 1 1"/>
     <material name="Gofa/grey" class="Gofa/" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1"/>
     <mesh name="Gofa/base" class="Gofa/" file="base_link.stl" scale="1 1 1"/>
     <mesh name="Gofa/link1" class="Gofa/" file="link_1.stl" scale="1 1 1"/>
@@ -22,31 +40,12 @@
     <mesh name="Gofa/link5" class="Gofa/" file="link_5.stl" scale="1 1 1"/>
     <mesh name="Gofa/link6" class="Gofa/" file="link_6.stl" scale="1 1 1"/>
   <mesh name="tool_mesh" file="painting_gun.obj"/> 
+    <!-- Painting gun collision mesh -->
     <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
   </asset>
 
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
-    <geom name="floor" size="0 0 0.05" type="plane" pos="0.0 0.0 0.0" material="groundplane"/>
-    <!-- Definition of the world frame -->
-    <body name="world_frame" pos="0.0 0.0 0.0">
-        <geom name="world_x_axis" type="capsule" fromto="0 0 0 0.15 0 0" size="0.01" rgba="1 0 0 1" contype="0" conaffinity="0"/>
-        <geom name="world_y_axis" type="capsule" fromto="0 0 0 0 0.15 0" size="0.01" rgba="0 1 0 1" contype="0" conaffinity="0"/>
-        <geom name="world_z_axis" type="capsule" fromto="0 0 0 0 0 0.15" size="0.01" rgba="0 0 1 1" contype="0" conaffinity="0"/>
-    </body>
-
-    <!-- Optimization search space -->
-    <!-- 
-    <body name="search_space" pos="-0.555 0.14 -0.025">
-        <geom name="working_area"
-              type="box"
-              size="0.1555 0.231 0.005"
-              rgba="1 0 0 1"
-              contype="0"
-              conaffinity="0"/>
-    </body>-->
-
-  <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
     <body name="Gofa/Robot">
       <body name="base" pos="0 0 0">
         <inertial pos="-0.0012013793465437 -0.000175191786981708 0.0862146007385352" euler="0 0 0" mass="3.50083457958494" diaginertia="0.0153015257917955 0.0159333503953857 0.0112162302268266"/>
@@ -123,26 +122,13 @@
     </body>
   </worldbody>
 
-<default><default class="Gofa/">
-      <material specular="0.5" shininess="0.25"/>
-      <default class="ur5e/type_joint1">
-        <joint range="-3.1415000000000002 3.1415000000000002"/>
-        <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
-      </default>
-      <default class="Gofa/visual">
-        <geom type="mesh" group="2" contype="0" conaffinity="0"/>
-      </default>
-      <default class="Gofa/collision">
-        <geom type="mesh" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
-        <default class="Gofa/eef_collision">
-          <geom type="cylinder" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
-        </default>
-      </default>
-    </default>
-  </default><actuator><motor joint="joint_1" gear="1"/>
+  <actuator>
+    <motor joint="joint_1" gear="1"/>
     <motor joint="joint_2" gear="1"/>
     <motor joint="joint_3" gear="1"/>
     <motor joint="joint_4" gear="1"/>
     <motor joint="joint_5" gear="1"/>
     <motor joint="joint_6" gear="1"/>
-  </actuator></mujoco>
+  </actuator>
+
+</mujoco>
