@@ -1,0 +1,185 @@
+<?xml version="1.0" ?>
+<robot name="fanuc_crx10ia_l">
+
+   <!-- Materials -->
+  <material name="color">
+    <color rgba="1 1 1 1"/>
+  </material>
+  
+  <link name="base">
+    <!--<inertial>
+      <origin xyz="-0.00382056 0.0020695 0.01942089" rpy="0 0 0"/>
+      <mass value="3.50083457958494"/>
+      <inertia ixx="0.0153015257917955" ixy="0" ixz="0" iyy="0.0159333503953857" iyz="0" izz="0.0112162302268266"/>
+    </inertial>-->
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\base.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\base.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <link name="L1">
+    <inertial>
+      <origin xyz="-0.00569797 0.00186743 0.11379122" rpy="0 0 0"/>
+      <mass value="7.936"/>
+      <inertia ixx="0.0529933" ixy="0" ixz="0" iyy="0.04558587" iyz="0" izz="0.03437197"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\L1.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="color"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\L1.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="J1" type="revolute">
+    <parent link="base"/>
+    <child link="L1"/>
+    <origin xyz="0 0 0.1277" rpy="0 0 0"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit lower="-3.14" upper="3.14" effort="100" velocity="1.0"/>
+  </joint>
+  <link name="L2">
+    <inertial>
+      <origin xyz="0.00030878 -0.23265489 0.40597396" rpy="0 0 0"/>
+      <mass value="17.576"/>
+      <inertia ixx="1.03123975" ixy="0" ixz="0" iyy="1.00774475" iyz="0" izz="0.07887079"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\L2.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="color"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\L2.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="J2" type="revolute">
+    <parent link="L1"/>
+    <child link="L2"/>
+    <origin xyz="0 0 0.117" rpy="0 0 0"/>
+    <axis xyz="0.0 1.0 0.0"/>
+    <limit lower="-3.14" upper="3.14" effort="100" velocity="1.0"/>
+  </joint>
+  <link name="L3">
+    <inertial>
+      <origin xyz="0.02023601 0.02297838 -0.00069627" rpy="0 0 0"/>
+      <mass value="4.107"/>
+      <inertia ixx="0.00972653" ixy="0" ixz="0" iyy="0.01821673" iyz="0" izz="0.01861618"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\L3.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="color"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\L3.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="J3" type="revolute">
+    <parent link="L2"/>
+    <child link="L3"/>
+    <origin xyz="0 0 0.71" rpy="0 0 0"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <limit lower="-4.71238898038469" upper="4.71238898038469" effort="100" velocity="1.0"/>
+  </joint>
+  <link name="L4">
+    <inertial>
+      <origin xyz="-0.01795465 0.0035709 0.00016217" rpy="0 0 0"/>
+      <mass value="4.959"/>
+      <inertia ixx="0.00826192" ixy="0" ixz="0" iyy="0.07702783" iyz="0" izz="0.07766716"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\L4.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="color"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\L4.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="J4" type="revolute">
+    <parent link="L3"/>
+    <child link="L4"/>
+    <origin xyz="0.54 0 0.0" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <limit lower="-3.3161255787892263" upper="3.3161255787892263" effort="100" velocity="1.0"/>
+  </joint>
+  <link name="L5">
+    <inertial>
+      <origin xyz="0.00186419 0.00283739 -0.0003275" rpy="0 0 0"/>
+      <mass value="2.141"/>
+      <inertia ixx="0.00413567" ixy="0" ixz="0" iyy="0.00472478" iyz="0" izz="0.00588804"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\L5.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="color"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\L5.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="J5" type="revolute">
+    <parent link="L4"/>
+    <child link="L5"/>
+    <origin xyz="0.0 -0.15 0.0" rpy="0 0 0"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <limit lower="-3.14" upper="3.14" effort="100" velocity="1.0"/>
+  </joint>
+  <link name="L6">
+    <inertial>
+      <origin xyz="-0.01611361 0.00604174 0.00031788" rpy="0 0 0"/>
+      <mass value="0.52"/>
+      <inertia ixx="0.00057032" ixy="0" ixz="0" iyy="0.00038816" iyz="0" izz="0.00045904"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\meshes\L6.obj" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material name="color"/>
+    </visual>
+    <collision>
+      <geometry>
+        <mesh filename="C:\Users\chris\OneDrive - Politecnico di Milano\Politecnico di Milano\PhD - dottorato\GitHub repositories Lenovo\Anypath_demo\ur5e_utils_mujoco\fanuc_crx_10ia_l\collision\L6.STL" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="J6" type="revolute">
+    <parent link="L5"/>
+    <child link="L6"/>
+    <origin xyz="0.15999999999999992 0.0 0.0" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <limit lower="-3.9269908169872414" upper="3.9269908169872414" effort="100" velocity="1.0"/>
+  </joint>
+  
+  <!-- Flange -->
+  <link name="flange"/>
+  <joint name="L6_to_flange" type="fixed">
+    <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+    <parent link="L6"/>
+    <child link="flange"/>
+  </joint>
+  
+</robot>

@@ -1,38 +1,35 @@
 <mujoco>
-  <compiler autolimits="true" balanceinertia="true" meshdir="assets" angle="radian" coordinate="local"/> <!-- If autolimits &#8220;true&#8221;, no need to specify that joints>/actuators are limited (inferred from the range) -->
+  <compiler autolimits="true" balanceinertia="true" meshdir="assets" angle="radian" coordinate="local"/>
   <option integrator="implicitfast"/>
-  <option gravity="0 0 -9.81"/> <!-- 0 0 -9.81 --> 
-  <size memory="2M"/> <!-- size of memory allocated for dynamic arrays in the mjData.arena memory space, in bytes -->
+  <option gravity="0 0 -9.81"/>
+  <size memory="2M"/>
   
   <visual>
     <global azimuth="120" elevation="-20"/> 
-    <!-- azimuth=rotation around z-axis (0 corresponds to looking in the positive x direction); elevation=rotation around a vector parallel to the camera&#8217;s X-axis (<0 corresponds to camera up)-->
-     <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
-    <!--headlight is a directional light centered at the current camera and pointed in the direction in which the camera is looking (in the sense of OpenGL-->
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
     <rgba haze="0.15 0.25 0.35 1"/>
   </visual>
  
   <default>
     <default class="Fanuc/">
-     <material specular="0.5" shininess="0.25"/>
-     <default class="Fanuc/type_joint1">
-       <joint range="-3.1415000000000002 3.1415000000000002"/>
-       <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
-     </default>
-     <default class="Fanuc/visual">
-          <geom type="mesh" group="2"/>
-     </default>
-     <default class="Fanuc/collision">
-          <geom type="capsule" group="3"/>
-          <default class="Fanuc/eef_collision">
-            <geom type="cylinder"/>
-          </default>
-     </default>
+      <material specular="0.5" shininess="0.25"/>
+      <default class="Fanuc/type_joint1">
+        <joint range="-3.1415000000000002 3.1415000000000002"/>
+        <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
+      </default>
+      <default class="Fanuc/visual">
+        <geom type="mesh" group="2" contype="0" conaffinity="0"/>
+      </default>
+      <default class="Fanuc/collision">
+        <geom type="mesh" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        <default class="Fanuc/eef_collision">
+          <geom type="cylinder" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        </default>
+      </default>
     </default>
   </default>
   
   <asset>
-    <!-- download the robot meshes and define colors -->
     <material name="Fanuc/white" class="Fanuc/" rgba="1 1 1 1"/>
     <material name="Fanuc/grey" class="Fanuc/" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1"/>
     <mesh name="Fanuc/base" class="Fanuc/" file="base.STL" scale="0.001 0.001 0.001"/>
@@ -46,51 +43,68 @@
     <!-- Painting gun collision mesh -->
     <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
   </asset>
+
   <worldbody>
     <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
      
     <body name="Fanuc/Robot">
-      <body name="Fanuc/Base" pos="0 0 0" euler="0 0 0">
+      <body name="base" pos="0 0 0" euler="0 0 0">
         <inertial pos="-0.00382056 0.00206950 0.01942089" euler="0 0 0" mass="3.50083457958494" diaginertia="0.0153015257917955 0.0159333503953857 0.0112162302268266"/>
-        <geom name="Fanuc/geom_base" class="Fanuc/visual" material="Fanuc/grey" mesh="Fanuc/base"/>
-        <body name="Fanuc/1st_link" pos="0 0 0.1277" euler="0 0 0">
+        <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
+
+        <geom name="Fanuc/geom_base_visual" class="Fanuc/visual" material="Fanuc/grey" mesh="Fanuc/base"/>
+        <geom name="Fanuc/geom_base_collision" class="Fanuc/collision" mesh="Fanuc/base"/>
+
+        <body name="link1" pos="0 0 0.1277" euler="0 0 0">
           <inertial pos="-0.00569797 0.00186743 0.11379122" euler="0 0 0" mass="7.93600000" diaginertia="0.05299330 0.04558587 0.03437197"/>
-          <joint name="J1" class="Fanuc/type_joint1" axis="0 0 1" damping="4"/>
-          <geom name="Fanuc/geom_link1" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link1"/>
-          <body name="Fanuc/2st_link" pos="0 0 0.117" euler="0 0 0"> <!-- value of 0.117 self-defined-->
+          <joint name="joint_1" class="Fanuc/type_joint1" axis="0 0 1" damping="4"/>
+          <geom name="Fanuc/geom_link1_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link1"/>
+          <geom name="Fanuc/geom_link1_collision" class="Fanuc/collision" mesh="Fanuc/link1"/>
+
+          <body name="link2" pos="0 0 0.117" euler="0 0 0">
             <inertial pos="0.00030878 -0.23265489 0.40597396" euler="0 0 0" mass="17.57600000" diaginertia="1.03123975 1.00774475 0.07887079"/>
-            <joint name="J2" class="Fanuc/type_joint1" axis="0 1 0" damping="4"/>
-            <geom name="Fanuc/geom_link2" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link2"/>
-            <body name="Fanuc/3st_link" pos="0 0 0.71" euler="0 0 0">
-	      <inertial pos="0.02023601 0.02297838 -0.00069627" euler="0 0 0" mass="4.10700000" diaginertia="0.00972653 0.01821673 0.01861618"/>
-	      <joint name="J3" range="-4.71238898038469 4.71238898038469" axis="0 -1 0" damping="4"/>
-	      <geom name="Fanuc/geom_link3" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link3"/>
-	      <body name="Fanuc/4st_link" pos="0.54 0 0.0" euler="0 0 0">
-	        <inertial pos="-0.01795465 0.00357090 0.00016217" euler="0 0 0" mass="4.95900000" diaginertia="0.00826192 0.07702783 0.07766716"/>
-	        <joint name="J4" range="-3.3161255787892263 3.3161255787892263" axis="-1 0 0" damping="4"/>
-	        <geom name="Fanuc/geom_link4" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link4"/>
-	        <body name="Fanuc/5st_link" pos="0.0 -0.15 0.0" euler="0 0 0">
-	          <inertial pos="0.00186419 0.00283739 -0.00032750" euler="0 0 0" mass="2.14100000" diaginertia="0.00413567 0.00472478 0.00588804"/>
-	          <joint name="J5" class="Fanuc/type_joint1" axis="0 -1 0" damping="5"/>
-	          <geom name="Fanuc/geom_link5" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link5"/>
-	          <body name="Fanuc/6st_link" pos="0.15999999999999992 0.0 0.0" euler="0 0 0">
-	            <inertial pos="-0.01611361 0.00604174 0.00031788" euler="0 0 0" mass="0.52000000" diaginertia="0.00057032 0.00038816 0.00045904"/>
-	            <joint name="J6" range="-3.9269908169872414 3.9269908169872414" axis="-1 0 0" damping="9"/>
-	            <geom name="Fanuc/geom_link6" class="Fanuc/visual" rgba="0.6 0.6 0.6 1" mesh="Fanuc/link6"/>
-	            <site name="ee_site" pos="0.0 0 0" euler="0 1.5708 0"/>
-              	    <body name="ee_frame_visual_only" pos="0.0 0 0" euler="0 1.5708 0">
+            <joint name="joint_2" class="Fanuc/type_joint1" axis="0 1 0" damping="4"/>
+            <geom name="Fanuc/geom_link2_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link2"/>
+            <geom name="Fanuc/geom_link2_collision" class="Fanuc/collision" mesh="Fanuc/link2"/>
+
+            <body name="link3" pos="0 0 0.71" euler="0 0 0">
+              <inertial pos="0.02023601 0.02297838 -0.00069627" euler="0 0 0" mass="4.10700000" diaginertia="0.00972653 0.01821673 0.01861618"/>
+              <joint name="joint_3" range="-4.71238898038469 4.71238898038469" axis="0 -1 0" damping="4"/>
+              <geom name="Fanuc/geom_link3_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link3"/>
+              <geom name="Fanuc/geom_link3_collision" class="Fanuc/collision" mesh="Fanuc/link3"/>
+
+              <body name="link4" pos="0.54 0 0.0" euler="0 0 0">
+                <inertial pos="-0.01795465 0.00357090 0.00016217" euler="0 0 0" mass="4.95900000" diaginertia="0.00826192 0.07702783 0.07766716"/>
+                <joint name="joint_4" range="-3.3161255787892263 3.3161255787892263" axis="-1 0 0" damping="4"/>
+                <geom name="Fanuc/geom_link4_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link4"/>
+                <geom name="Fanuc/geom_link4_collision" class="Fanuc/collision" mesh="Fanuc/link4"/>
+
+                <body name="link5" pos="0.0 -0.15 0.0" euler="0 0 0">
+                  <inertial pos="0.00186419 0.00283739 -0.00032750" euler="0 0 0" mass="2.14100000" diaginertia="0.00413567 0.00472478 0.00588804"/>
+                  <joint name="joint_5" class="Fanuc/type_joint1" axis="0 -1 0" damping="5"/>
+                  <geom name="Fanuc/geom_link5_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link5"/>
+                  <geom name="Fanuc/geom_link5_collision" class="Fanuc/collision" mesh="Fanuc/link5"/>
+
+                  <body name="link6" pos="0.15999999999999992 0.0 0.0" euler="0 0 0">
+                    <inertial pos="-0.01611361 0.00604174 0.00031788" euler="0 0 0" mass="0.52000000" diaginertia="0.00057032 0.00038816 0.00045904"/>
+                    <joint name="joint_6" range="-3.9269908169872414 3.9269908169872414" axis="-1 0 0" damping="9"/>
+                    <geom name="Fanuc/geom_link6_visual" class="Fanuc/visual" rgba="0.6 0.6 0.6 1" mesh="Fanuc/link6"/>
+                    <geom name="Fanuc/geom_link6_collision" class="Fanuc/collision" mesh="Fanuc/link6"/>
+
+                    <site name="ee_site" pos="0.0 0 0" euler="0 1.5708 0"/>
+                    <body name="ee_frame_visual_only" pos="0.0 0 0" euler="0 1.5708 0">
                       <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002" contype="0" conaffinity="0"/>
                       <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002" contype="0" conaffinity="0"/>
                       <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
 
-                      <!-- 'Movable frame' inside the gripper fingers -->
                       <body name="tool_frame" pos="0 0 0.0" quat="1 0 0 0">
                         <site name="tool_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
                         <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
                         <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
                         <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
                       </body>
-                      
                     <body name="tool_base" pos="0 0 0">
       <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
       <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
@@ -102,22 +116,22 @@
       <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
     </body>
   </body>
-	          </body>
-	       </body>
-	     </body>
-	   </body>
-         </body>
-       </body>
-     </body>
-   </body>  
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
   </worldbody>
   
- <actuator>
-  <motor joint="J1" gear="1"/>
-  <motor joint="J2" gear="1"/>
-  <motor joint="J3" gear="1"/>
-  <motor joint="J4" gear="1"/>
-  <motor joint="J5" gear="1"/>
-  <motor joint="J6" gear="1"/>
- </actuator>
+  <actuator>
+    <motor joint="joint_1" gear="1"/>
+    <motor joint="joint_2" gear="1"/>
+    <motor joint="joint_3" gear="1"/>
+    <motor joint="joint_4" gear="1"/>
+    <motor joint="joint_5" gear="1"/>
+    <motor joint="joint_6" gear="1"/>
+  </actuator>
 </mujoco>
