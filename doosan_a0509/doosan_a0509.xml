@@ -1,19 +1,8 @@
-<mujoco model="ur5e scene">
-  <compiler angle="radian" meshdir="doosan_a0509/assets" autolimits="true"/>
-
-  <statistic center="0.3 0 0.4" extent="0.8"/>
-
-  <visual>
-    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
-    <rgba haze="0.15 0.25 0.35 1"/>
-    <global azimuth="120" elevation="-20"/>
-  </visual>
+<mujoco model="a0509">
+<compiler angle="radian" meshdir="assets" autolimits="true"/>
 
   <asset>
-    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
-    <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
-    <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
-  <mesh name="A0509_0_0" file="A0509_0_0.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="A0509_0_0" file="A0509_0_0.stl" scale="0.001 0.001 0.001"/>
     <mesh name="A0509_1_0" file="A0509_1_0.stl" scale="0.001 0.001 0.001"/>
     <mesh name="A0509_1_1" file="A0509_1_1.stl" scale="0.001 0.001 0.001"/>
     <mesh name="A0509_1_2" file="A0509_1_2.stl" scale="0.001 0.001 0.001"/>
@@ -31,32 +20,10 @@
     <material name="blue" rgba="0.227 0.251 0.31 1"/>
     <material name="metal" rgba="0.65 0.65 0.65 1"/>
     <material name="sky_blue" rgba="0.016 0.933 0.992 1.0"/>
-  <mesh name="tool_mesh" file="painting_gun.obj"/> 
-    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
   </asset>
 
   <worldbody>
-    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
-    <geom name="floor" size="0 0 0.05" type="plane" pos="0.0 0.0 0.0" material="groundplane"/>
-    <!-- Definition of the world frame -->
-    <body name="world_frame" pos="0.0 0.0 0.0">
-        <geom name="world_x_axis" type="capsule" fromto="0 0 0 0.15 0 0" size="0.01" rgba="1 0 0 1" contype="0" conaffinity="0"/>
-        <geom name="world_y_axis" type="capsule" fromto="0 0 0 0 0.15 0" size="0.01" rgba="0 1 0 1" contype="0" conaffinity="0"/>
-        <geom name="world_z_axis" type="capsule" fromto="0 0 0 0 0 0.15" size="0.01" rgba="0 0 1 1" contype="0" conaffinity="0"/>
-    </body>
-
-    <!-- Optimization search space -->
-    <!-- 
-    <body name="search_space" pos="-0.555 0.14 -0.025">
-        <geom name="working_area"
-              type="box"
-              size="0.1555 0.231 0.005"
-              rgba="1 0 0 1"
-              contype="0"
-              conaffinity="0"/>
-    </body>-->
-
-  <body name="base" pos="0 0 0.0" quat="1 0 0 0">
+    <body name="base" pos="0 0 0.0" quat="1 0 0 0">
       <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
       <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
       <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
@@ -109,17 +76,7 @@
                       <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
                       <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
                     </body>
-                  <body name="tool_base" pos="0 0 0">
-      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
-      <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
-      <!-- collision mesh -->
-      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
-      <!-- Marker (red sphere) to specify the origin -->
-      <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
-      <!-- Marker (green sphere) to specify the point of application of the weight -->
-      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
-    </body>
-  </body>
+                  </body>
                 
                 
                 </body>
@@ -131,10 +88,13 @@
     </body>
   </worldbody>
 
-<actuator><position joint="joint_1" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
+	<actuator>
+		<position joint="joint_1" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
 		<position joint="joint_2" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
 		<position joint="joint_3" kp="10" kv="1" ctrlrange="-2.7925 2.7925"/>
 		<position joint="joint_4" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
 		<position joint="joint_5" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
 		<position joint="joint_6" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
-	</actuator></mujoco>
+	</actuator>
+  
+</mujoco>
