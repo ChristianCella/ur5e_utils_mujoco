@@ -1,6 +1,5 @@
 <mujoco model="ur5e scene">
-  <compiler angle="radian" meshdir="doosan_a0509/assets" autolimits="true"/>
-
+  <compiler autolimits="true" balanceinertia="true" meshdir="gofa5/assets" angle="radian" coordinate="local"/>
   <statistic center="0.3 0 0.4" extent="0.8"/>
 
   <visual>
@@ -13,26 +12,19 @@
     <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
     <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
-  <mesh name="A0509_0_0" file="A0509_0_0.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_1_0" file="A0509_1_0.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_1_1" file="A0509_1_1.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_1_2" file="A0509_1_2.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_2_0" file="A0509_2_0.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_2_1" file="A0509_2_1.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_2_2" file="A0509_2_2.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_3_0" file="A0509_3_0.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_3_1" file="A0509_3_1.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_4_0" file="A0509_4_0.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_4_1" file="A0509_4_1.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_5_0" file="A0509_5_0.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_5_1" file="A0509_5_1.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="A0509_6_0" file="A0509_6_0.stl" scale="0.001 0.001 0.001"/>
-
-    <material name="blue" rgba="0.227 0.251 0.31 1"/>
-    <material name="metal" rgba="0.65 0.65 0.65 1"/>
-    <material name="sky_blue" rgba="0.016 0.933 0.992 1.0"/>
-  <mesh name="tool_mesh" file="painting_gun.obj"/> 
-    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
+  <material name="Gofa/white" class="Gofa/" rgba="1 1 1 1"/>
+    <material name="Gofa/grey" class="Gofa/" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1"/>
+    <mesh name="Gofa/base" class="Gofa/" file="base_link.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link1" class="Gofa/" file="link_1.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link2" class="Gofa/" file="link_2.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link3" class="Gofa/" file="link_3.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link4" class="Gofa/" file="link_4.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link5" class="Gofa/" file="link_5.stl" scale="1 1 1"/>
+    <mesh name="Gofa/link6" class="Gofa/" file="link_6.stl" scale="1 1 1"/>
+  <mesh name="tool_mesh" file="welding_gun.obj"/> 
+    <mesh name="welding_gun_collision_mesh" file="welding_gun.obj"/>
+  <mesh name="cube_mesh" file="cube.obj"/> 
+    <mesh name="cube_collision_mesh" file="cube.obj"/>
   </asset>
 
   <worldbody>
@@ -56,72 +48,76 @@
               conaffinity="0"/>
     </body>-->
 
-  <body name="base" pos="0 0 0.0" quat="1 0 0 0">
-      <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-      <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_0_0" material="metal"/>
-  
-      <body name="link_1" pos="0 0 0.1560">
-        <inertial pos="-6.9e-05 0.024423 -0.007375" quat="0.626042 0.779776 -0.00329495 0.00321293" mass="3.715" diaginertia="0.0189902 0.017021 0.0135698"/>
-        <joint name="joint_1" pos="0 0 0" axis="0 0 1" range="-6.2832 6.2832" actuatorfrcrange="-194 194" damping="800"/>
-        <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_1_0" material="metal"/>
-        <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_1_1" material="blue"/>
-        <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_1_2" material="sky_blue"/>
-        <body name="link_2" quat="0.499898 -0.500102 -0.5 -0.5">
-          <inertial pos="0.20449 0 0.13271" quat="0.499405 0.500811 0.499197 0.500585" mass="6.837" diaginertia="0.25627 0.25442 0.019399"/>
-          <joint name="joint_2" pos="0 0 0" axis="0 0 1" range="-6.2832 6.2832" actuatorfrcrange="-194 194" damping="800"/>
-          <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_2_0" material="blue"/>
-          <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_2_1" material="blue"/>
-          <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_2_2" material="blue"/>
-          <body name="link_3" pos="0.409 0 0" quat="0.707035 0 0 0.707179">
-            <inertial pos="7.1e-05 -0.005123 0.033009" quat="0.704152 -0.0338098 0.031631 0.708538" mass="2.769" diaginertia="0.013912 0.012526 0.00877466"/>
-            <joint name="joint_3" pos="0 0 0" axis="0 0 1" range="-2.7925 2.7925" actuatorfrcrange="-163 163" damping="800"/>
-            <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_3_0" material="metal"/>
-            <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_3_1" material="blue"/>
-            <body name="link_4" pos="0 -0.367 0" quat="0.707035 0.707179 0 0">
-              <inertial pos="-8.6e-05 0.086348 -0.086031" quat="0.983575 -0.180483 0.000213119 0.00238692" mass="2.679" diaginertia="0.0560681 0.0528175 0.00763342"/>
-              <joint name="joint_4" pos="0 0 0" axis="0 0 1" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="600"/>
-              <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_4_0" material="blue"/>
-              <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_4_1" material="blue"/>
-              <body name="link_5" quat="0.707035 -0.707179 0 0">
-                <inertial pos="9.1e-05 -0.006457 0.015434" quat="0.480275 0.522032 -0.522242 0.473372" mass="2.051" diaginertia="0.0104696 0.00907878 0.00845556"/>
-                <joint name="joint_5" pos="0 0 0" axis="0 0 1" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="600"/>
-                <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_5_0" material="metal"/>
-                <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_5_1" material="blue"/>
-                <body name="link_6" pos="0 -0.124 0" quat="0.707035 0.707179 0 0">
-                  <inertial pos="-2.2e-05 -7e-06 -0.051746" quat="0.999989 0.00141825 -0.000201627 0.0044558" mass="0.773" diaginertia="0.00874837 0.00785656 0.00444517"/>
-                  <joint name="joint_6" pos="0 0 0" axis="0 0 1" range="-6.2832 6.2832" actuatorfrcrange="-50 50" damping="600"/>
-                  <geom type="mesh" contype="1" conaffinity="1" group="1" density="0" mesh="A0509_6_0" material="metal"/>
+  <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <body name="Gofa/Robot">
+      <body name="base" pos="0 0 0">
+        <inertial pos="-0.0012013793465437 -0.000175191786981708 0.0862146007385352" euler="0 0 0" mass="3.50083457958494" diaginertia="0.0153015257917955 0.0159333503953857 0.0112162302268266"/>
+        <geom name="Gofa/geom_base_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/base"/>
+        <geom name="Gofa/geom_base_collision" class="Gofa/collision" mesh="Gofa/base"/>
 
-                  <site name="ee_site" pos="0 0.0 0" quat="1.0 0.0 0 0"/>
+        <body name="link_1" pos="0 0 0.1875" euler="0 0 0">
+          <inertial pos="2.08682453325091e-6 0.0103608399967513 0.0705307203199506" euler="0 0 0" mass="2.76743491139404" diaginertia="0.0115158625894577 0.006494848329231 0.0109446835358581"/>
+          <joint name="joint_1" class="ur5e/type_joint1" axis="0 0 1"/>
+          <geom name="Gofa/geom_link1_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/link1"/>
+          <geom name="Gofa/geom_link1_collision" class="Gofa/collision" mesh="Gofa/link1"/>
 
-                  <!-- Replace tool frames with Hande gripper -->
-                  <body name="ee_frame_visual_only" pos="0 0.0 0" quat="1 0 0 0">
-                    <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002"/>
-                    <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002"/>
-                    <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002"/>
-                                              
-                    <!-- 'Movable frame' inside the gripper fingers -->
-                    <body name="tool_frame" pos="0 0 0.0" quat="1 0 0 0">
-                      <site name="tool_site" pos="0 0.0 0.0" quat="1 0 0 0"/>
-                      <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
-                      <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
-                      <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
-                    </body>
-                  <body name="tool_base" pos="0 0 0">
-      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
+          <body name="link_2" pos="0 -0.085 0.0775" euler="0 0 0">
+            <inertial pos="1.34018352211628E-06 -0.0500118376116071 0.222001399322246" euler="0 0 0" mass="4.28904168670464" diaginertia="0.130524729873898 0.133278449324229 0.00669457974697178"/>
+            <joint name="joint_2" class="ur5e/type_joint1" axis="0 1 0"/>
+            <geom name="Gofa/geom_link2_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/link2"/>
+            <geom name="Gofa/geom_link2_collision" class="Gofa/collision" mesh="Gofa/link2"/>
+
+            <body name="link_3" pos="0 -0.00100000000000007 0.444" euler="0 0 0">
+              <inertial pos="0.0128129281453599 0.0944171780907046 0.0247427540642403" euler="0 0 0" mass="3.38333107992875" diaginertia="0.0175626138728642 0.0140230068919562 0.013275205067567"/>
+              <joint name="joint_3" range="-3.926990817 1.4835298642" axis="0 1 0"/>
+              <geom name="Gofa/geom_link3_visual" class="Gofa/visual" material="Gofa/grey" mesh="Gofa/link3"/>
+              <geom name="Gofa/geom_link3_collision" class="Gofa/collision" mesh="Gofa/link3"/>
+
+              <body name="link_4" pos="0.096 0.0860000000000001 0.11" euler="0 0 0">
+                <inertial pos="0.160558561602322 0.041976811408979 -2.36623354021859E-07" euler="0 0 0" mass="2.77857535641324" diaginertia="0.00881683095901354 0.0340754175571832 0.0389358932156922"/>
+                <joint name="joint_4" class="ur5e/type_joint1" axis="1 0 0"/>
+                <geom name="Gofa/geom_link4_visual" class="Gofa/visual" material="Gofa/white" mesh="Gofa/link4"/>
+                <geom name="Gofa/geom_link4_collision" class="Gofa/collision" mesh="Gofa/link4"/>
+
+                <body name="link_5" pos="0.374 0.0744999999999998 0" euler="0 0 0">
+                  <inertial pos="-0.0147152361879962 -0.0785646469392633 0.0427558021601431" euler="0 0 0" mass="3.01105814739001" diaginertia="0.0114597336686444 0.013561904467501 0.0108480119549914"/>
+                  <joint name="joint_5" class="ur5e/type_joint1" axis="0 1 0"/>
+                  <geom name="Gofa/geom_link5_visual" class="Gofa/visual" material="Gofa/white" mesh="Gofa/link5"/>
+                  <geom name="Gofa/geom_link5_collision" class="Gofa/collision" mesh="Gofa/link5"/>
+
+                  <body name="link_6" pos="0.0679999999999995 -0.0744999999999998 0.0800000000000003" euler="0 0 0">
+                    <inertial pos="0.0137506852604966 0.000239804131398652 -0.000341962798940165" euler="0 0 0" mass="0.146500988015653" diaginertia="0.000128977630055306 0 7.65022909768016e-5"/>
+                    <joint name="joint_6" range="-4.7123889804 4.7123889804" axis="1 0 0"/>
+                    <geom name="Gofa/geom_link6_visual" class="Gofa/visual" rgba="0.6 0.6 0.6 1" mesh="Gofa/link6"/>
+                    <geom name="Gofa/geom_link6_collision" class="Gofa/collision" mesh="Gofa/link6"/>
+
+                    <site name="ee_site" pos="0.0326 0 0" quat="0.7071 0 0.7071 0"/>
+                    <body name="ee_frame_visual_only" pos="0.0326 0 0" quat="0.7071 0 0.7071 0">
+                      <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
+
+                      <!-- Reference frame attached @ tool tip -->
+                      <body name="tool_frame" pos="0 0 0" quat="1 0 0 0">
+                        <site name="tool_site" pos="0 0 0" quat="1 0 0 0"/>
+                        <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                      </body>
+                    <body name="tool_base" pos="0 0 0">
+      <inertial mass="0.752" pos="0 -0.070 0.028" diaginertia="0.0143 0.0143 0.0016"/> 
+      <!-- <inertial mass="0.0" pos="0 0.0 0.0" diaginertia="0.0 0.0 0.0"/> -->
+      <!-- <inertial mass="0.95" pos="-0.003 -0.0375 0.013" diaginertia="0.0143 0.0143 0.0016"/> -->
       <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
-      <!-- collision mesh -->
-      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+      <!-- collision cylinder -->
+      <geom name="welding_gun_collision" type="mesh" mesh="welding_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
       <!-- Marker (red sphere) to specify the origin -->
       <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
       <!-- Marker (green sphere) to specify the point of application of the weight -->
-      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
+      <!-- <geom type="sphere" size="0.005" pos="0 -0.070 0.028" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
     </body>
   </body>
-                
-                
+                  </body>
                 </body>
               </body>
             </body>
@@ -129,12 +125,229 @@
         </body>
       </body>
     </body>
+  <body name="cube" pos="0 0 0">
+
+      <geom type="mesh" mesh="cube_mesh" rgba="0.45 0.45 0.45 1" contype="0" conaffinity="0" group="0"/>
+
+      <!-- Collisions-->
+      <geom name="cube_collision" type="mesh" mesh="cube_collision_mesh" pos="0 0 0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+
+      <!-- center of the piece -->
+      <site name="mount_cube_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
+
+      <!-- Point 1 -->
+      <body name="point_1_traj" pos="0.15 0.12 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 2 -->
+      <body name="point_2_traj" pos="0.1 0.12 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 3 -->
+      <body name="point_3_traj" pos="0.05 0.12 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+        <!-- Point 4 -->
+      <body name="point_4_traj" pos="0.0 0.12 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 5 -->
+      <body name="point_5_traj" pos="-0.05 0.12 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 6 -->
+      <body name="point_6_traj" pos="-0.1 0.12 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 7 -->
+      <body name="point_7_traj" pos="-0.115 0.116 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 8 -->
+      <body name="point_8_traj" pos="-0.126 0.105 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 9 -->
+      <body name="point_9_traj" pos="-0.130 0.09 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 10 -->
+      <body name="point_10_traj" pos="-0.126 0.075 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 11 -->
+      <body name="point_11_traj" pos="-0.115 0.064 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 12 -->
+      <body name="point_12_traj" pos="-0.1 0.06 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 13 -->
+      <body name="point_13_traj" pos="-0.05 0.06 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 14 -->
+      <body name="point_14_traj" pos="-0.0 0.06 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 15 -->
+      <body name="point_15_traj" pos="0.05 0.06 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 16 -->
+      <body name="point_16_traj" pos="0.1 0.06 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 17 -->
+      <body name="point_17_traj" pos="0.115 0.056 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 18 -->
+      <body name="point_18_traj" pos="0.126 0.045 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 19 -->
+      <body name="point_19_traj" pos="0.13 0.03 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 20 -->
+      <body name="point_20_traj" pos="0.126 0.015 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 21 -->
+      <body name="point_21_traj" pos="0.115 0.004 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 22 -->
+      <body name="point_22_traj" pos="0.1 0.0 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 23 -->
+      <body name="point_23_traj" pos="0.05 0.0 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 24 -->
+      <body name="point_24_traj" pos="0.0 0.0 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 25 -->
+      <body name="point_25_traj" pos="-0.05 0.0 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 26 -->
+      <body name="point_26_traj" pos="-0.1 0.0 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+      <!-- Point 27 -->
+      <body name="point_27_traj" pos="-0.15 0.0 0.32" quat="0 1 0 0">
+        <geom type="capsule" fromto="0 0 0 0.04 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.04 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.04" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+      </body>
+
+    </body>   
   </worldbody>
 
-<actuator><position joint="joint_1" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
-		<position joint="joint_2" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
-		<position joint="joint_3" kp="10" kv="1" ctrlrange="-2.7925 2.7925"/>
-		<position joint="joint_4" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
-		<position joint="joint_5" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
-		<position joint="joint_6" kp="10" kv="1" ctrlrange="-6.2832 6.2832"/>
-	</actuator></mujoco>
+<default><default class="Gofa/">
+      <material specular="0.5" shininess="0.25"/>
+      <default class="ur5e/type_joint1">
+        <joint range="-3.1415000000000002 3.1415000000000002"/>
+        <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
+      </default>
+      <default class="Gofa/visual">
+        <geom type="mesh" group="2" contype="0" conaffinity="0"/>
+      </default>
+      <default class="Gofa/collision">
+        <geom type="mesh" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        <default class="Gofa/eef_collision">
+          <geom type="cylinder" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
+        </default>
+      </default>
+    </default>
+  <geom condim="3" friction="1 0.5 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+  </default><actuator><motor joint="joint_1" gear="1"/>
+    <motor joint="joint_2" gear="1"/>
+    <motor joint="joint_3" gear="1"/>
+    <motor joint="joint_4" gear="1"/>
+    <motor joint="joint_5" gear="1"/>
+    <motor joint="joint_6" gear="1"/>
+  </actuator></mujoco>

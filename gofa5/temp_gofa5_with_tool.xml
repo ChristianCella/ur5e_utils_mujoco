@@ -39,9 +39,9 @@
     <mesh name="Gofa/link4" class="Gofa/" file="link_4.stl" scale="1 1 1"/>
     <mesh name="Gofa/link5" class="Gofa/" file="link_5.stl" scale="1 1 1"/>
     <mesh name="Gofa/link6" class="Gofa/" file="link_6.stl" scale="1 1 1"/>
-  <mesh name="tool_mesh" file="painting_gun.obj"/> 
-    <!-- Painting gun collision mesh -->
-    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
+  <mesh name="tool_mesh" file="welding_gun.obj"/> 
+    <!-- Welding gun collision mesh -->
+    <mesh name="welding_gun_collision_mesh" file="welding_gun.obj"/>
   </asset>
 
   <worldbody>
@@ -102,14 +102,16 @@
                         <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
                       </body>
                     <body name="tool_base" pos="0 0 0">
-      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
+      <inertial mass="0.752" pos="0 -0.070 0.028" diaginertia="0.0143 0.0143 0.0016"/> 
+      <!-- <inertial mass="0.0" pos="0 0.0 0.0" diaginertia="0.0 0.0 0.0"/> -->
+      <!-- <inertial mass="0.95" pos="-0.003 -0.0375 0.013" diaginertia="0.0143 0.0143 0.0016"/> -->
       <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
-      <!-- collision mesh -->
-      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+      <!-- collision cylinder -->
+      <geom name="welding_gun_collision" type="mesh" mesh="welding_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
       <!-- Marker (red sphere) to specify the origin -->
       <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
       <!-- Marker (green sphere) to specify the point of application of the weight -->
-      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
+      <!-- <geom type="sphere" size="0.005" pos="0 -0.070 0.028" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
     </body>
   </body>
                   </body>
