@@ -1,0 +1,150 @@
+<mujoco>
+  <compiler autolimits="true" balanceinertia="true" meshdir="assets" angle="radian" coordinate="local"/>
+  <option integrator="implicitfast"/>
+  <option gravity="0 0 0"/>
+  <size memory="2M"/>
+
+  <visual>
+    <global azimuth="120" elevation="-20"/>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.1 0.1 0.1" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+  </visual>
+
+  <default>
+    <default class="Fairino/">
+      <material specular="0.5" shininess="0.25"/>
+      <default class="Fairino/type_joint">
+        <joint range="-3.0543 3.0543"/>
+        <general ctrlrange="-3.0543 3.0543"/>
+      </default>
+      <default class="Fairino/visual">
+        <geom type="mesh" group="2" contype="0" conaffinity="0"/>
+      </default>
+      <default class="Fairino/collision">
+        <geom type="mesh" group="3" contype="1" conaffinity="1"/>
+      </default>
+    </default>
+  </default>
+
+  <asset>
+    <material name="Fairino/white" class="Fairino/" rgba="0.89804 0.91765 0.92941 1"/>
+    <material name="Fairino/grey" class="Fairino/" rgba="0.79216 0.81961 0.93333 1"/>
+    <mesh name="Fairino/base_link" class="Fairino/" file="base_link.STL" scale="1 1 1"/>
+    <mesh name="Fairino/shoulder_link" class="Fairino/" file="shoulder_link.STL" scale="1 1 1"/>
+    <mesh name="Fairino/upperarm_link" class="Fairino/" file="upperarm_link.STL" scale="1 1 1"/>
+    <mesh name="Fairino/forearm_link" class="Fairino/" file="forearm_link.STL" scale="1 1 1"/>
+    <mesh name="Fairino/wrist1_link" class="Fairino/" file="wrist1_link.STL" scale="1 1 1"/>
+    <mesh name="Fairino/wrist2_link" class="Fairino/" file="wrist2_link.STL" scale="1 1 1"/>
+    <mesh name="Fairino/wrist3_link" class="Fairino/" file="wrist3_link.STL" scale="1 1 1"/>
+  <mesh name="tool_mesh" file="painting_gun.obj"/> 
+    <!-- Painting gun collision mesh -->
+    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
+  </asset>
+
+  <contact>
+    <exclude body1="base" body2="shoulder_link"/>
+    <exclude body1="shoulder_link" body2="upperarm_link"/>
+    <exclude body1="upperarm_link" body2="forearm_link"/>
+    <exclude body1="forearm_link" body2="wrist1_link"/>
+    <exclude body1="wrist1_link" body2="wrist2_link"/>
+    <exclude body1="wrist2_link" body2="wrist3_link"/>
+  </contact>
+
+  <worldbody>
+    <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+    <body name="Fairino/Robot">
+
+      <body name="base" pos="0 0 0">
+        <inertial pos="-0.00037778 -0.00035367 0.035825" euler="0 0 0" mass="0.73775" diaginertia="0.0026263 0.0026258 0.0044466"/>
+        <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002" contype="0" conaffinity="0"/>
+        <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
+        <geom name="Fairino/geom_base_visual" class="Fairino/visual" material="Fairino/white" mesh="Fairino/base_link"/>
+        <geom name="Fairino/geom_base_collision" class="Fairino/collision" mesh="Fairino/base_link" rgba="1 0 0 0.4"/>
+
+        <!-- j1: xyz="0 0 0" rpy="0 0 0" axis="0 0 1" -->
+        <body name="shoulder_link" pos="0 0 0" euler="0 0 0">
+          <inertial pos="3.3888e-09 -0.0079713 0.17311" euler="0 0 0" mass="9.8122" diaginertia="0.041746 0.039088 0.031895"/>
+          <joint name="j1" class="Fairino/type_joint" axis="0 0 1" range="-3.0543 3.0543"/>
+          <geom name="Fairino/geom_shoulder_visual" class="Fairino/visual" material="Fairino/white" mesh="Fairino/shoulder_link"/>
+          <geom name="Fairino/geom_shoulder_collision" class="Fairino/collision" mesh="Fairino/shoulder_link" rgba="0 1 0 0.4"/>
+
+          <!-- j2: xyz="0 0 0.18" rpy="1.5708 0 0" axis="0 0 1" -->
+          <body name="upperarm_link" pos="0 0 0.18" euler="1.5708 0 0">
+            <inertial pos="-0.28687 -1.3562e-08 0.18211" euler="0 0 0" mass="29.757" diaginertia="0.0783 2.0297 2.0144"/>
+            <joint name="j2" axis="0 0 1" range="-4.6251 1.4835"/>
+            <geom name="Fairino/geom_upperarm_visual" class="Fairino/visual" material="Fairino/white" mesh="Fairino/upperarm_link"/>
+            <geom name="Fairino/geom_upperarm_collision" class="Fairino/collision" mesh="Fairino/upperarm_link" rgba="0 0 1 0.4"/>
+
+            <!-- j3: xyz="-0.7 0 0" rpy="0 0 0" axis="0 0 1" -->
+            <body name="forearm_link" pos="-0.7 0 0" euler="0 0 0">
+              <inertial pos="-0.29317 8.0463e-07 0.049055" euler="0 0 0" mass="12.684" diaginertia="0.015471 0.53044 0.52884"/>
+              <joint name="j3" axis="0 0 1" range="-2.8274 2.8274"/>
+              <geom name="Fairino/geom_forearm_visual" class="Fairino/visual" material="Fairino/white" mesh="Fairino/forearm_link"/>
+              <geom name="Fairino/geom_forearm_collision" class="Fairino/collision" mesh="Fairino/forearm_link" rgba="1 1 0 0.4"/>
+
+              <!-- j4: xyz="-0.586 0 0" rpy="0 0 0" axis="0 0 1" -->
+              <body name="wrist1_link" pos="-0.586 0 0" euler="0 0 0">
+                <inertial pos="5.5958e-07 -0.0024406 0.15369" euler="0 0 0" mass="2.234" diaginertia="0.0034862 0.0026647 0.0032186"/>
+                <joint name="j4" axis="0 0 1" range="-4.6251 1.4835"/>
+                <geom name="Fairino/geom_wrist1_visual" class="Fairino/visual" material="Fairino/white" mesh="Fairino/wrist1_link"/>
+                <geom name="Fairino/geom_wrist1_collision" class="Fairino/collision" mesh="Fairino/wrist1_link" rgba="1 0 1 0.4"/>
+
+                <!-- j5: xyz="0 0 0.159" rpy="1.5708 0 0" axis="0 0 1" -->
+                <body name="wrist2_link" pos="0 0 0.159" euler="1.5708 0 0">
+                  <inertial pos="-5.5958e-07 0.0024406 0.10869" euler="0 0 0" mass="2.234" diaginertia="0.0034862 0.0026647 0.0032186"/>
+                  <joint name="j5" axis="0 0 1" range="-3.0543 3.0543"/>
+                  <geom name="Fairino/geom_wrist2_visual" class="Fairino/visual" material="Fairino/white" mesh="Fairino/wrist2_link"/>
+                  <geom name="Fairino/geom_wrist2_collision" class="Fairino/collision" mesh="Fairino/wrist2_link" rgba="0 1 1 0.4"/>
+
+                  <!-- j6: xyz="0 0 0.114" rpy="-1.5708 0 0" axis="0 0 1" -->
+                  <body name="wrist3_link" pos="0 0 0.114" euler="-1.5708 0 0">
+                    <inertial pos="-8.7069e-06 -3.2125e-05 0.082427" euler="0 0 0" mass="0.20143" diaginertia="0.00011168 0.0001118 0.00016774"/>
+                    <joint name="j6" axis="0 0 1" range="-3.0543 3.0543"/>
+                    <geom name="Fairino/geom_wrist3_visual" class="Fairino/visual" material="Fairino/grey" mesh="Fairino/wrist3_link"/>
+                    <geom name="Fairino/geom_wrist3_collision" class="Fairino/collision" mesh="Fairino/wrist3_link" rgba="1 0.5 0 0.4"/>
+
+                    <site name="ee_site" pos="0 0 0.105" quat="1 0 0 0"/>
+                    <body name="ee_frame_visual_only" pos="0 0 0.105" quat="1 0 0 0">
+                      <geom type="capsule" fromto="0 0 0 0.05 0 0" rgba="1 0 0 1" size="0.002" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0.05 0" rgba="0 1 0 1" size="0.002" contype="0" conaffinity="0"/>
+                      <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
+
+                      <body name="tool_frame" pos="0 0 0.0" quat="1 0 0 0">
+                        <site name="tool_site" pos="0 0 0" quat="1 0 0 0"/>
+                        <geom type="capsule" fromto="0 0 0 0.06 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0.06 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
+                        <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
+                      </body>
+                    <body name="tool_base" pos="0 0 0">
+      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
+      <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
+      <!-- collision mesh -->
+      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+      <!-- Marker (red sphere) to specify the origin -->
+      <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
+      <!-- Marker (green sphere) to specify the point of application of the weight -->
+      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
+    </body>
+  </body>
+
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor joint="j1" gear="1"/>
+    <motor joint="j2" gear="1"/>
+    <motor joint="j3" gear="1"/>
+    <motor joint="j4" gear="1"/>
+    <motor joint="j5" gear="1"/>
+    <motor joint="j6" gear="1"/>
+  </actuator>
+
+</mujoco>
