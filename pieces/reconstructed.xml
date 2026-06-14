@@ -29,119 +29,119 @@
       <site name="mount_reconstructed_site" pos="0.0 0.0 0.0" size="0.005" rgba="1 0 0 1"/>
 
       <!-- Point 0 (waypoint_id: 0:0) -->
-      <body name="point_0_traj" pos="1.2598389702191433 -0.12177624973664676 0.4399665670052016" quat="-0.04613876755134496 0.705589065223876 0.04630411468214134 0.7055998966332429">
+      <body name="point_0_traj" pos="1.2398389702191433 -0.12177624973664676 0.4399665670052016" quat="-0.04613876755134496 0.705589065223876 0.04630411468214134 0.7055998966332429">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 1 (waypoint_id: 0:1) -->
-      <body name="point_1_traj" pos="1.259763160310089 -0.1217283074173864 0.6850079842804658" quat="-0.04668196970576362 0.7055047100423981 0.04757209379449118 0.7055641669645576">
+      <body name="point_1_traj" pos="1.239763160310089 -0.1217283074173864 0.6850079842804658" quat="-0.04668196970576362 0.7055047100423981 0.04757209379449118 0.7055641669645576">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 2 (waypoint_id: 0:2) -->
-      <body name="point_2_traj" pos="1.2547960037013313 -0.12182916717120795 0.9300164291260314" quat="-0.00397026772020063 0.7110567723435863 0.003974395827144443 0.7031121586605941">
+      <body name="point_2_traj" pos="1.2347960037013313 -0.12182916717120795 0.9300164291260314" quat="-0.00397026772020063 0.7110567723435863 0.003974395827144443 0.7031121586605941">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 3 (waypoint_id: 0:3) -->
-      <body name="point_3_traj" pos="1.2530619008935922 -0.12183167259901001 1.1750466678957883" quat="-0.003220286608168738 0.6946829212760613 0.014887489021399898 0.7191548034409257">
+      <body name="point_3_traj" pos="1.2330619008935922 -0.12183167259901001 1.1750466678957883" quat="-0.003220286608168738 0.6946829212760613 0.014887489021399898 0.7191548034409257">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 4 (waypoint_id: 0:4) -->
-      <body name="point_4_traj" pos="1.2518535447323198 -0.11720248948405182 1.2074304228377515" quat="0.09380679926039524 0.6873930557166241 0.10708715450980319 0.7121961897567801">
+      <body name="point_4_traj" pos="1.2318535447323198 -0.11720248948405182 1.2074304228377515" quat="0.09380679926039524 0.6873930557166241 0.10708715450980319 0.7121961897567801">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 5 (waypoint_id: 0:5) -->
-      <body name="point_5_traj" pos="1.250579077716589 -0.10363472293113687 1.2371895329969869" quat="0.19427477954965808 0.6651366299420344 0.2038875553284155 0.6915782228515349">
+      <body name="point_5_traj" pos="1.230579077716589 -0.10363472293113687 1.2371895329969869" quat="0.19427477954965808 0.6651366299420344 0.2038875553284155 0.6915782228515349">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 6 (waypoint_id: 0:6) -->
-      <body name="point_6_traj" pos="1.2499417164446514 -0.082209300807677 1.2619171366122646" quat="0.28436833850668014 0.6384818649975174 0.30316137677580185 0.6477412567959854">
+      <body name="point_6_traj" pos="1.2299417164446514 -0.082209300807677 1.2619171366122646" quat="0.28436833850668014 0.6384818649975174 0.30316137677580185 0.6477412567959854">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 7 (waypoint_id: 0:7) -->
-      <body name="point_7_traj" pos="1.2492818173015212 -0.05468362155685173 1.2796051555888968" quat="0.373712001040846 0.5967888674398254 0.39103470461403883 0.5926839358084109">
+      <body name="point_7_traj" pos="1.2292818173015212 -0.05468362155685173 1.2796051555888968" quat="0.373712001040846 0.5967888674398254 0.39103470461403883 0.5926839358084109">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 8 (waypoint_id: 0:8) -->
-      <body name="point_8_traj" pos="1.2489003220006754 -0.02328012328022956 1.2888222800838822" quat="0.45421848328420716 0.5350974524226776 0.47194894736979587 0.5334983382638567">
+      <body name="point_8_traj" pos="1.2289003220006754 -0.02328012328022956 1.2888222800838822" quat="0.45421848328420716 0.5350974524226776 0.47194894736979587 0.5334983382638567">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 9 (waypoint_id: 0:9) -->
-      <body name="point_9_traj" pos="1.2483614813989392 0.009442872994473488 1.2888186477746328" quat="0.516745022652 0.47584169364247475 0.5519565870490325 0.4493252609958948">
+      <body name="point_9_traj" pos="1.2283614813989392 0.009442872994473488 1.2888186477746328" quat="0.516745022652 0.47584169364247475 0.5519565870490325 0.4493252609958948">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 10 (waypoint_id: 0:10) -->
-      <body name="point_10_traj" pos="1.2476536443505697 0.04083266226540186 1.2795941801211046" quat="0.5754893548082831 0.39235007769840685 0.6141195387914385 0.3711207500356063">
+      <body name="point_10_traj" pos="1.2276536443505697 0.04083266226540186 1.2795941801211046" quat="0.5754893548082831 0.39235007769840685 0.6141195387914385 0.3711207500356063">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 11 (waypoint_id: 0:11) -->
-      <body name="point_11_traj" pos="1.2464343888942682 0.06833406898763948 1.2618934938164896" quat="0.6225156505689229 0.30080013231600067 0.663777577049746 0.28529436272277736">
+      <body name="point_11_traj" pos="1.2264343888942682 0.06833406898763948 1.2618934938164896" quat="0.6225156505689229 0.30080013231600067 0.663777577049746 0.28529436272277736">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 12 (waypoint_id: 0:12) -->
-      <body name="point_12_traj" pos="1.2450131780289422 0.08972550213381132 1.2371520134246834" quat="0.6800630610469541 0.19864591129370165 0.6769247389486986 0.1995668627928437">
+      <body name="point_12_traj" pos="1.2250131780289422 0.08972550213381132 1.2371520134246834" quat="0.6800630610469541 0.19864591129370165 0.6769247389486986 0.1995668627928437">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 13 (waypoint_id: 0:13) -->
-      <body name="point_13_traj" pos="1.2455176154238203 0.10333517722037279 1.2073877125175625" quat="0.709302432404664 0.08954491557152504 0.6901910012278887 0.11183983773307374">
+      <body name="point_13_traj" pos="1.2255176154238203 0.10333517722037279 1.2073877125175625" quat="0.709302432404664 0.08954491557152504 0.6901910012278887 0.11183983773307374">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 14 (waypoint_id: 0:14) -->
-      <body name="point_14_traj" pos="1.2464019916872493 0.1080147397435726 1.1750017736362752" quat="0.7179187142204702 -0.004974954926763788 0.6959577285325192 0.014519286875054207">
+      <body name="point_14_traj" pos="1.2264019916872493 0.1080147397435726 1.1750017736362752" quat="0.7179187142204702 -0.004974954926763788 0.6959577285325192 0.014519286875054207">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 15 (waypoint_id: 0:15) -->
-      <body name="point_15_traj" pos="1.2500635306306838 0.10806062144646351 0.8555715332046986" quat="0.6669217029486044 -1.5128274543391464e-05 0.7451278022755053 -1.3540461905113805e-05">
+      <body name="point_15_traj" pos="1.2300635306306838 0.10806062144646351 0.8555715332046986" quat="0.6669217029486044 -1.5128274543391464e-05 0.7451278022755053 -1.3540461905113805e-05">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       </body>
 
       <!-- Point 16 (waypoint_id: 0:16) -->
-      <body name="point_16_traj" pos="1.2498616250240235 0.10798897139509835 0.5361152494027287" quat="0.7081172490108711 -0.0015522251524811006 0.7060917737959523 0.0013997242719904835">
+      <body name="point_16_traj" pos="1.2298616250240235 0.10798897139509835 0.5361152494027287" quat="0.7081172490108711 -0.0015522251524811006 0.7060917737959523 0.0013997242719904835">
         <geom type="capsule" fromto="0 0 0 0.08 0 0" rgba="1 0 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
         <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
