@@ -31,7 +31,7 @@
   
   <asset>
     <material name="Fanuc/white" class="Fanuc/" rgba="1 1 1 1"/>
-    <material name="Fanuc/grey" class="Fanuc/" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1"/>
+    <material name="Fanuc/grey" class="Fanuc/" rgba="0.278 0.278 0.278 1"/>
     <mesh name="Fanuc/base" class="Fanuc/" file="base.STL" scale="0.001 0.001 0.001"/>
     <mesh name="Fanuc/link1" class="Fanuc/" file="L1.STL" scale="0.001 0.001 0.001"/>
     <mesh name="Fanuc/link2" class="Fanuc/" file="L2.STL" scale="0.001 0.001 0.001"/>
@@ -55,43 +55,40 @@
         <geom type="capsule" fromto="0 0 0 0 0 0.05" rgba="0 0 1 1" size="0.002" contype="0" conaffinity="0"/>
 
         <geom name="Fanuc/geom_base_visual" class="Fanuc/visual" material="Fanuc/grey" mesh="Fanuc/base"/>
-        <geom name="Fanuc/geom_base_collision" class="Fanuc/collision" mesh="Fanuc/base"/>
+        <geom name="Fanuc/geom_base_collision" class="Fanuc/collision" type="cylinder" pos="0 0 0.15" size="0.08 0.14" rgba="1 0 0 0.4" contype="1" conaffinity="1" group="3"/>
 
         <body name="link1" pos="0 0 0.1277" euler="0 0 0">
           <inertial pos="-0.00569797 0.00186743 0.11379122" euler="0 0 0" mass="7.93600000" diaginertia="0.05299330 0.04558587 0.03437197"/>
           <joint name="joint_1" class="Fanuc/type_joint1" axis="0 0 1" damping="4"/>
           <geom name="Fanuc/geom_link1_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link1"/>
-          <geom name="Fanuc/geom_link1_collision" class="Fanuc/collision" mesh="Fanuc/link1"/>
 
           <body name="link2" pos="0 0 0.117" euler="0 0 0">
             <inertial pos="0.00030878 -0.23265489 0.40597396" euler="0 0 0" mass="17.57600000" diaginertia="1.03123975 1.00774475 0.07887079"/>
             <joint name="joint_2" class="Fanuc/type_joint1" axis="0 1 0" damping="4"/>
             <geom name="Fanuc/geom_link2_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link2"/>
-            <geom name="Fanuc/geom_link2_collision" class="Fanuc/collision" mesh="Fanuc/link2"/>
+            <geom name="Fanuc/geom_link2_collision" class="Fanuc/collision" type="cylinder" pos="0 -0.22 0.355" size="0.07 0.38" rgba="0 0 1 0.4" contype="1" conaffinity="1" group="3"/>
 
             <body name="link3" pos="0 0 0.71" euler="0 0 0">
               <inertial pos="0.02023601 0.02297838 -0.00069627" euler="0 0 0" mass="4.10700000" diaginertia="0.00972653 0.01821673 0.01861618"/>
               <joint name="joint_3" range="-4.71238898038469 4.71238898038469" axis="0 -1 0" damping="4"/>
               <geom name="Fanuc/geom_link3_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link3"/>
-              <geom name="Fanuc/geom_link3_collision" class="Fanuc/collision" mesh="Fanuc/link3"/>
+              <geom name="Fanuc/geom_link3_collision" class="Fanuc/collision" type="cylinder" pos="0.27 0 0" euler="0 1.5708 0" size="0.05 0.27" rgba="1 1 0 0.4" contype="1" conaffinity="1" group="3"/>
 
               <body name="link4" pos="0.54 0 0.0" euler="0 0 0">
                 <inertial pos="-0.01795465 0.00357090 0.00016217" euler="0 0 0" mass="4.95900000" diaginertia="0.00826192 0.07702783 0.07766716"/>
                 <joint name="joint_4" range="-3.3161255787892263 3.3161255787892263" axis="-1 0 0" damping="4"/>
                 <geom name="Fanuc/geom_link4_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link4"/>
-                <geom name="Fanuc/geom_link4_collision" class="Fanuc/collision" mesh="Fanuc/link4"/>
 
                 <body name="link5" pos="0.0 -0.15 0.0" euler="0 0 0">
                   <inertial pos="0.00186419 0.00283739 -0.00032750" euler="0 0 0" mass="2.14100000" diaginertia="0.00413567 0.00472478 0.00588804"/>
                   <joint name="joint_5" class="Fanuc/type_joint1" axis="0 -1 0" damping="5"/>
                   <geom name="Fanuc/geom_link5_visual" class="Fanuc/visual" material="Fanuc/white" mesh="Fanuc/link5"/>
-                  <geom name="Fanuc/geom_link5_collision" class="Fanuc/collision" mesh="Fanuc/link5"/>
+                  <geom name="Fanuc/geom_link5_collision" class="Fanuc/collision" type="cylinder" pos="0.07 0 0" euler="0 1.5708 0" size="0.045 0.08" rgba="0 1 1 0.4" contype="1" conaffinity="1" group="3"/>
 
                   <body name="link6" pos="0.15999999999999992 0.0 0.0" euler="0 0 0">
                     <inertial pos="-0.01611361 0.00604174 0.00031788" euler="0 0 0" mass="0.52000000" diaginertia="0.00057032 0.00038816 0.00045904"/>
                     <joint name="joint_6" range="-3.9269908169872414 3.9269908169872414" axis="-1 0 0" damping="9"/>
                     <geom name="Fanuc/geom_link6_visual" class="Fanuc/visual" rgba="0.6 0.6 0.6 1" mesh="Fanuc/link6"/>
-                    <geom name="Fanuc/geom_link6_collision" class="Fanuc/collision" mesh="Fanuc/link6"/>
 
                     <site name="ee_site" pos="0.0 0 0" euler="0 1.5708 0"/>
                     <body name="ee_frame_visual_only" pos="0.0 0 0" euler="0 1.5708 0">

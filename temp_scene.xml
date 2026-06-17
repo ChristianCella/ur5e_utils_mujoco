@@ -14,7 +14,7 @@
     <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
   <material class="ur5e" name="black" rgba="0.033 0.033 0.033 1"/>
     <material class="ur5e" name="jointgray" rgba="0.278 0.278 0.278 1"/>
-    <material class="ur5e" name="linkgray" rgba="0.82 0.82 0.82 1"/>
+    <material class="ur5e" name="linkgray" rgba="0.72 0.72 0.72 1"/>
     <material class="ur5e" name="urblue" rgba="0.49 0.678 0.8 1"/>
 
     <mesh file="base_0.obj"/>
@@ -37,8 +37,8 @@
     <mesh file="wrist2_1.obj"/>
     <mesh file="wrist2_2.obj"/>
     <mesh file="wrist3.obj"/>
-  <mesh name="tool_mesh" file="painting_gun.obj"/> 
-    <mesh name="painting_gun_collision_mesh" file="painting_gun.obj"/>
+  <mesh name="tool_mesh" file="welding_gun.obj"/> 
+    <mesh name="welding_gun_collision_mesh" file="welding_gun.obj"/>
   </asset>
 
   <worldbody>
@@ -70,7 +70,7 @@
       <geom type="capsule" fromto="0 0 0 0 0.08 0" rgba="0 1 0 1" size="0.003" contype="0" conaffinity="0"/>
       <geom type="capsule" fromto="0 0 0 0 0 0.08" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
       <geom mesh="base_0" material="black" class="visual"/>
-      <geom mesh="base_1" material="jointgray" class="visual"/>
+      <geom mesh="base_1" material="linkgray" class="visual"/>
 
       <!-- COM marker -->
       <geom name="base_com" type="sphere" pos="0.0 0.0 0.0" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
@@ -88,6 +88,7 @@
 
         <!-- COM marker -->
         <geom name="shoulder_link_com" type="sphere" pos="0.0 0.00193 -0.02561" size="0.01" rgba="1 0 0 1" group="1" contype="0" conaffinity="0"/>
+              
 
         <body name="upper_arm_link" pos="0 0.138 0" quat="1 0 1 0">
           <inertial mass="8.058" pos="0.0 -0.01464 0.2125" diaginertia="0.0149 0.3564 0.3553"/>
@@ -179,14 +180,16 @@
                       <geom type="capsule" fromto="0 0 0 0 0 0.06" rgba="0 0 1 1" size="0.003" contype="0" conaffinity="0"/>
                     </body>
                   <body name="tool_base" pos="0 0 0">
-      <inertial mass="0.752" pos="0.0 0.0 0.01" diaginertia="0.0143 0.0143 0.0016"/> 
+      <inertial mass="0.752" pos="0 -0.070 0.028" diaginertia="0.0143 0.0143 0.0016"/> 
+      <!-- <inertial mass="0.0" pos="0 0.0 0.0" diaginertia="0.0 0.0 0.0"/> -->
+      <!-- <inertial mass="0.95" pos="-0.003 -0.0375 0.013" diaginertia="0.0143 0.0143 0.0016"/> -->
       <geom type="mesh" mesh="tool_mesh" rgba="0.6 0.6 0.6 1" contype="0" conaffinity="0" group="0"/>
-      <!-- collision mesh -->
-      <geom name="painting_gun_collision" type="mesh" mesh="painting_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
+      <!-- collision cylinder -->
+      <geom name="welding_gun_collision" type="mesh" mesh="welding_gun_collision_mesh" pos="0 0 0.0" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1" group="3"/>
       <!-- Marker (red sphere) to specify the origin -->
       <site name="mount_site" pos="0 0 0" size="0.005" rgba="1 0 0 1"/>
       <!-- Marker (green sphere) to specify the point of application of the weight -->
-      <!-- <geom type="sphere" size="0.005" pos="0.0 0.0 0.1" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
+      <!-- <geom type="sphere" size="0.005" pos="0 -0.070 0.028" rgba="0 1 0 1" contype="0" conaffinity="0" group="2"/> -->
     </body>
   </body>
                 </body>

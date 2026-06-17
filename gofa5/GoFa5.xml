@@ -14,7 +14,7 @@
   <default>
     <default class="Gofa/">
       <material specular="0.5" shininess="0.25"/>
-      <default class="ur5e/type_joint1">
+      <default class="Gofa/type_joint1">
         <joint range="-3.1415000000000002 3.1415000000000002"/>
         <general ctrlrange="-3.1415000000000002 3.1415000000000002"/>
       </default>
@@ -23,16 +23,13 @@
       </default>
       <default class="Gofa/collision">
         <geom type="mesh" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
-        <default class="Gofa/eef_collision">
-          <geom type="cylinder" group="3" rgba="0.7 0.1 0.1 0.3" contype="1" conaffinity="1"/>
-        </default>
       </default>
     </default>
   </default>
 
   <asset>
     <material name="Gofa/white" class="Gofa/" rgba="1 1 1 1" />
-    <material name="Gofa/grey" class="Gofa/" rgba="0.27800000000000002 0.27800000000000002 0.27800000000000002 1" />
+    <material name="Gofa/grey" class="Gofa/" rgba="0.278 0.278 0.278 1" />
     <mesh name="Gofa/base"  class="Gofa/" file="base_link.stl" scale="1 1 1"/>
     <mesh name="Gofa/link1" class="Gofa/" file="link_1.stl"    scale="1 1 1"/>
     <mesh name="Gofa/link2" class="Gofa/" file="link_2.stl"    scale="1 1 1"/>
@@ -48,43 +45,95 @@
       <body name="base" pos="0 0 0">
         <inertial pos="-0.0012013793465437 -0.000175191786981708 0.0862146007385352" euler="0 0 0" mass="3.50083457958494" diaginertia="0.0153015257917955 0.0159333503953857 0.0112162302268266"/>
         <geom name="Gofa/geom_base_visual"    class="Gofa/visual"    material="Gofa/grey" mesh="Gofa/base"/>
-        <geom name="Gofa/geom_base_collision" class="Gofa/collision" mesh="Gofa/base"/>
+        <geom name="Gofa/geom_base_collision" class="Gofa/collision"
+          type="cylinder"
+          pos="0 0 0.094"
+          size="0.06 0.087"
+          rgba="1 0 0 0.4"
+          contype="1" conaffinity="1" group="3"/>
 
         <body name="link_1" pos="0 0 0.1875" euler="0 0 0">
           <inertial pos="2.08682453325091e-6 0.0103608399967513 0.0705307203199506" euler="0 0 0" mass="2.76743491139404" diaginertia="0.0115158625894577 0.006494848329231 0.0109446835358581"/>
-          <joint name="joint_1" class="ur5e/type_joint1" axis="0 0 1"/>
+          <joint name="joint_1" class="Gofa/type_joint1" axis="0 0 1"/>
           <geom name="Gofa/geom_link1_visual"    class="Gofa/visual"    material="Gofa/grey" mesh="Gofa/link1"/>
-          <geom name="Gofa/geom_link1_collision" class="Gofa/collision" mesh="Gofa/link1"/>
+          <geom name="Gofa/geom_link1_collision" class="Gofa/collision"
+            type="cylinder"
+            pos="0 0.01 0.075"
+            euler="1.5708 0 0"
+            size="0.06 0.08"
+            rgba="0 1 0 0.4"
+            contype="1" conaffinity="1" group="3"/>
 
           <body name="link_2" pos="0 -0.085 0.0775" euler="0 0 0">
             <inertial pos="1.34018352211628E-06 -0.0500118376116071 0.222001399322246" euler="0 0 0" mass="4.28904168670464" diaginertia="0.130524729873898 0.133278449324229 0.00669457974697178"/>
-            <joint name="joint_2" class="ur5e/type_joint1" axis="0 1 0"/>
+            <joint name="joint_2" class="Gofa/type_joint1" axis="0 1 0"/>
             <geom name="Gofa/geom_link2_visual"    class="Gofa/visual"    material="Gofa/grey" mesh="Gofa/link2"/>
-            <geom name="Gofa/geom_link2_collision" class="Gofa/collision" mesh="Gofa/link2"/>
+            <geom name="Gofa/geom_link2_collision" class="Gofa/collision"
+              type="box"
+              pos="0.0 -0.055 0.222"
+              size="0.06 0.015 0.27"
+              rgba="0 0 1 0.4"
+              contype="1" conaffinity="1" group="3"/>
 
             <body name="link_3" pos="0 -0.00100000000000007 0.444" euler="0 0 0">
               <inertial pos="0.0128129281453599 0.0944171780907046 0.0247427540642403" euler="0 0 0" mass="3.38333107992875" diaginertia="0.0175626138728642 0.0140230068919562 0.013275205067567"/>
               <joint name="joint_3" range="-3.926990817 1.4835298642" axis="0 1 0"/>
               <geom name="Gofa/geom_link3_visual"    class="Gofa/visual"    material="Gofa/grey" mesh="Gofa/link3"/>
-              <geom name="Gofa/geom_link3_collision" class="Gofa/collision" mesh="Gofa/link3"/>
+              <geom name="Gofa/geom_link3_collision" class="Gofa/collision"
+                type="cylinder"
+                pos="0.0 0.1 0.0"
+                euler="1.5708 0 0"
+                size="0.06 0.087"
+                rgba="1 1 0 0.4"
+                contype="1" conaffinity="1" group="3"/>
 
               <body name="link_4" pos="0.096 0.0860000000000001 0.11" euler="0 0 0">
                 <inertial pos="0.160558561602322 0.041976811408979 -2.36623354021859E-07" euler="0 0 0" mass="2.77857535641324" diaginertia="0.00881683095901354 0.0340754175571832 0.0389358932156922"/>
-                <joint name="joint_4" class="ur5e/type_joint1" axis="1 0 0"/>
+                <joint name="joint_4" class="Gofa/type_joint1" axis="1 0 0"/>
                 <geom name="Gofa/geom_link4_visual"    class="Gofa/visual"    material="Gofa/white" mesh="Gofa/link4"/>
-                <geom name="Gofa/geom_link4_collision" class="Gofa/collision" mesh="Gofa/link4"/>
+                <!-- Long arm along X -->
+                <geom name="Gofa/geom_link4_collision_arm" class="Gofa/collision"
+                      type="cylinder"
+                      pos="0.05 0.0 0"
+                      euler="0 1.5708 0"
+                      size="0.04 0.11"
+                      rgba="1 0 1 0.4"
+                      contype="1" conaffinity="1" group="3"/>
+
+                <!-- Joint head at the end -->
+                <geom name="Gofa/geom_link4_collision_head" class="Gofa/collision"
+                      type="box"
+                      pos="0.265 0.095 0"
+                      size="0.15 0.013 0.05"
+                      rgba="1 0 1 0.4"
+                      contype="1" conaffinity="1" group="3"/>
 
                 <body name="link_5" pos="0.374 0.0744999999999998 0" euler="0 0 0">
                   <inertial pos="-0.0147152361879962 -0.0785646469392633 0.0427558021601431" euler="0 0 0" mass="3.01105814739001" diaginertia="0.0114597336686444 0.013561904467501 0.0108480119549914"/>
-                  <joint name="joint_5" class="ur5e/type_joint1" axis="0 1 0"/>
+                  <joint name="joint_5" class="Gofa/type_joint1" axis="0 1 0"/>
                   <geom name="Gofa/geom_link5_visual"    class="Gofa/visual"    material="Gofa/white" mesh="Gofa/link5"/>
-                  <geom name="Gofa/geom_link5_collision" class="Gofa/collision" mesh="Gofa/link5"/>
+                  <!-- Arm along Y -->
+                  <geom name="Gofa/geom_link5_collision_y" class="Gofa/collision"
+                        type="cylinder"
+                        pos="0 -0.085 0"
+                        euler="1.5708 0 0"
+                        size="0.038 0.075"
+                        rgba="0 1 1 0.4"
+                        contype="1" conaffinity="1" group="3"/>
+
+                  <!-- Arm along Z -->
+                  <geom name="Gofa/geom_link5_collision_z" class="Gofa/collision"
+                        type="cylinder"
+                        pos="-0.02 -0.075 0.078"
+                        euler="1.5708 1.5708 0"
+                        size="0.038 0.1"
+                        rgba="0 1 1 0.4"
+                        contype="1" conaffinity="1" group="3"/>
 
                   <body name="link_6" pos="0.0679999999999995 -0.0744999999999998 0.0800000000000003" euler="0 0 0">
                     <inertial pos="0.0137506852604966 0.000239804131398652 -0.000341962798940165" euler="0 0 0" mass="0.146500988015653" diaginertia="0.000128977630055306 0 7.65022909768016e-5"/>
-                    <joint name="joint_6" range="-4.7123889804 4.7123889804" axis="1 0 0"/>
+                    <joint name="joint_6" class="Gofa/type_joint1" range="-4.7123889804 4.7123889804" axis="1 0 0"/>
                     <geom name="Gofa/geom_link6_visual"    class="Gofa/visual"    rgba="0.6 0.6 0.6 1" mesh="Gofa/link6"/>
-                    <geom name="Gofa/geom_link6_collision" class="Gofa/collision" mesh="Gofa/link6"/>
 
                     <site name="ee_site" pos="0.0326 0 0" quat="0.7071 0 0.7071 0"/>
                     <body name="ee_frame_visual_only" pos="0.0326 0 0" quat="0.7071 0 0.7071 0">
